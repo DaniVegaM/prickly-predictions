@@ -1,0 +1,35 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.moon-grid{
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0 15rem 0;
+    margin-top: 10rem;
+    height: 50rem;
+    @include m.tablet{
+        padding: 0 0 30rem 0;
+        margin-top: 15rem;
+    }
+    .moon{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        .moon__icon{
+            border-radius: 50%;
+            box-shadow: v.$luzNoche;
+            width: 30rem;
+            @include m.tablet{
+                width: 50rem;
+            }
+        }
+        .moon__info{
+            margin-top: 5rem;
+            color: v.$blanco;
+            @include m.tablet{
+                margin-top: 8rem;
+            }
+        }
+    }
+}

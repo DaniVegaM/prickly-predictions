@@ -1,0 +1,27 @@
+//Fuentes
+$fuente-titulos: 'Ubuntu', sans-serif;
+$fuente-textos: 'Montserrat', sans-serif;
+$fuente-cursiva: 'Playpen Sans', cursive;
+
+//Media Queries
+$phone: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+//Colores
+$primario: #6dd5fa;
+$secundario: #203a43;
+$terciario: #ffbf00;
+$negro: #000000;
+$blanco: #f8f9fa;
+$grisClaro: #eceeef;
+$luzNoche: 0px 0px 20px 10px rgba(255, 255, 255, 0.8), 0px 0px 40px 20px rgba(255, 255, 255, 0.6), 0px 0px 60px 30px rgba(255, 255, 255, 0.4);
+
+//Fondos
+$dia: linear-gradient(to bottom, #00b4db, #0083b0);
+$noche: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+
+$contrasteDia: linear-gradient(to top, #2193b0, #6dd5ed);
+$contrasteDia2: linear-gradient(to top, #b2fefa, #0ed2f7);
+//Unidades
+$separacion: 5rem;
