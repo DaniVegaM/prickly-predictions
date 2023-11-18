@@ -10,7 +10,8 @@ const apiDays = "build/scripts/apiSMNDays.json";
 //Connecting API tuTiempo.net for the Moon API
 let apiKey = "qxEz4qazaXatWd2";
 
-window.addEventListener("load", ubicacionActual);
+//Detect automatically your current location
+window.addEventListener("load", currentLocation);
 
 //Event Listener for Search-Bar
 const searchBar = document.querySelector("#search__input");
@@ -18,26 +19,29 @@ const searchIcon = document.querySelector("#search__image");
 
 searchIcon.addEventListener('click', event =>{
     event.preventDefault();
-    buscarUbicacion();
+    searchLocation();
 });
 
-function buscarUbicacion(){
+function searchLocation(){
     //Divide string to search easier all the references in the SMN API
     const stringArray = searchBar.value.split(", ");
     fetch(apiData).then(respuesta => respuesta.json()).then(resultado => {
       generarHTMLData(resultado, stringArray);
-    })
+    });
+    fetch(apiDays).then(respuesta => respuesta.json()).then(resultado => {
+      generarHTMLDays(resultado, stringArray);
+    });
 }
 
 //Tracking your Current Location
-function ubicacionActual(){ //Get Latitude and Longitude
+function currentLocation(){ //Get Latitude and Longitude
     if ("geolocation" in navigator){
         navigator.geolocation.getCurrentPosition(function(position){
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
             
             console.log("Ya te encontramos con tu ubicacion real");
-            consultarApi();
+            consultApi();
 
         }, (error) => {
           switch(error.code) {
@@ -92,7 +96,7 @@ function ubicacionActual(){ //Get Latitude and Longitude
             text: "No tenemos acceso a tu ubicación",
             footer: '<p class="textoPequeno">Lo sentimos mucho</p>'
           });
-          consultarApi();
+          consultApi();
         });
     } else {
         //Check API
@@ -106,11 +110,11 @@ function ubicacionActual(){ //Get Latitude and Longitude
           text: "No tenemos acceso a tu ubicación",
           footer: '<p class="textoPequeno">Lo sentimos mucho</p>'
         });
-        consultarApi();
+        consultApi();
     }      
 }
 
-function consultarApi(){ //Get data from API
+function consultApi(){ //Get data from API
     console.log("Consultando API");
 
     const apiMoon = `https://api.tutiempo.net/json/?lan=es&apid=${apiKey}&ll=${latitude},${longitude}`;
@@ -126,7 +130,7 @@ function consultarApi(){ //Get data from API
         .then(respuesta => respuesta.json())
             .then(resultado => {
                 console.log(resultado);
-                generarHTMLDays(resultado);
+                generarHTMLDays(resultado, []);
             })
                     .catch(error => console.error("Error al obtener datos del clima:", error));
     
@@ -158,6 +162,8 @@ const moonIcon = document.querySelector("#moonIcon");
 const moonInfo = document.querySelector("#moonInfo");
 
 function generarHTMLData(resultado, array){
+    console.log("Tu arreglo: ");
+    console.table(array);
     //Bye Loader
     maxTemp.classList.remove("loader");
     minTemp.classList.remove("loader");
@@ -165,29 +171,11 @@ function generarHTMLData(resultado, array){
     windSpeed.classList.remove("loader");
     mainHumidity.classList.remove("loader");
 
-    let locationFound = [];
-
-    if(!(array.length == 0)){ //If there is a value in the search-bar
-      while(i < array.length){
-          locationFound = resultado.find(element => {
-          (element.nmun).includes(word);
-        });
-        if(locationFound.length != 0){ //If the location is found
-          break;
-        }
-      };
-    } else{
-      locationFound = resultado.find(element => Math.abs(element.lat - latitude) < tolerance && Math.abs(element.lon - longitude) < tolerance);
-    }
-    console.log("Datos de la API de la ubicación dinamica");
-    console.log(locationFound);
+    let locationFound = getDataLocation(resultado, array);
 
     //Destructuring to get JSON DATA
-    let i;
-    console.log("Latitud :" + latitude);
-    console.log("Longitud :" + longitude);
-
-    const tolerance = 0.1;
+    // console.log("Latitud :" + latitude);
+    // console.log("Longitud :" + longitude);
 
       //Destructuring to get data from locationFound
       const {nmun, nes, desciel, tmax, tmin, velvien} = locationFound;
@@ -238,31 +226,23 @@ function generarHTMLData(resultado, array){
     }
 }
 
-function generarHTMLDays(resultado){
+function generarHTMLDays(resultado, array){
   //Destructuring to get JSON DATA
   let i;
-  console.log("Latitud :" + latitude);
-  console.log("Longitud :" + longitude);
+  // console.log("Latitud :" + latitude);
+  // console.log("Longitud :" + longitude);
 
-  const tolerance = 0.1;
-
-  const locationFound = resultado.find(element => Math.abs(element.lat - latitude) < tolerance && Math.abs(element.lon - longitude) < tolerance);
-
-  if (locationFound) {
-    console.log("Sí está");
-    console.log(locationFound);
+  let locationFound = getDataLocation(resultado, array);
+    // console.log("Sí está");
+    // console.log(locationFound);
 
     //Destructuring to get data from locationFound
     const {temp, hr} = locationFound;
-    console.log("La temperatura es: " + temp);
+    // console.log("La temperatura es: " + temp);
     
     //Insert HTML
     mainTemp.innerHTML = `${temp}ºC`;
     mainHumidity.innerHTML = `${hr}%`;
-
-  } else{
-    console.log("Estas perdido!");
-  }
 }
 
 function generarHTMLMoon(resultado){
@@ -325,4 +305,59 @@ function generarHTMLMoon(resultado){
         moonInfo.innerHTML = "Luna Llena";
       break;
     }
+}
+
+function getDataLocation(resultado, array){
+  let locationFound = {};
+  const tolerance = 0.1;
+  let i = 0;
+
+  if(!(array.length === 0)){ //If there is a value in the search-bar
+    while(i < array.length){
+      switch(i){
+        case 0: //Just nmun
+          locationFound = resultado.find(element => normalizeString(element.nmun) == normalizeString(array[i]));
+          if(locationFound === undefined){
+            locationFound = resultado.find(element => normalizeString(element.nes) == normalizeString(array[i]));
+          }
+        break;
+        
+        case 1: //nmun and nes
+          locationFound = resultado.find(element => normalizeString(element.nmun) == normalizeString(array[i-1]) && normalizeString(element.nes) == normalizeString(array[i]));
+          if(locationFound === undefined){ //Just see the nmun
+            locationFound = resultado.find(element => normalizeString(element.nmun) == normalizeString(array[i-1]));
+          }
+        break;
+      }
+
+      if(locationFound === undefined && i == (array.length - 1)){ //If the location isn`t found
+        Swal.fire({
+          icon: "error",
+          title: "Oh no!",
+          text: "No encontramos esa ciudad",
+          footer: '<p class="textoPequeno">Lo sentimos mucho</p>'
+        });
+        return undefined;
+      } else{
+        return locationFound;
+      }
+      i++;
+    };
+  } else{
+    locationFound = resultado.find(element => Math.abs(element.lat - latitude) < tolerance && Math.abs(element.lon - longitude) < tolerance);
+    if(locationFound === undefined){
+      return undefined;
+    } else{
+      return locationFound;
+    }
+  }
+  console.log("Datos de la API de la ubicación dinamica");
+  console.log("LocationFound es: ");
+  console.log(locationFound);
+}
+
+//Utilities
+function normalizeString(cadena) {
+  //We use Regular Expressions (REGEX) to normalize our strings
+  return ((cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "")).toLowerCase()).replace(/\s/g, "");
 }
