@@ -1,6 +1,7 @@
 @use "base/mixins" as m;
 @use "base/variables" as v;
 
+
 .menu{
     display: flex;
     flex-direction: column;
@@ -8,11 +9,57 @@
     align-items: center;
     min-height: 40rem;
     padding: 5rem 0;
+    text-align: center;
     @include m.tablet{
-        flex-direction: row;
         justify-content: space-between;
+        flex-direction: column-reverse;
     }
     .menu__logo{
         max-width: 20rem;
+        margin: 0 auto;
+    }
+    .menu__marca{
+        margin-bottom: 4rem;
+        color: v.$blanco;
+        @include m.tablet{
+            margin-bottom: 10rem;
+            margin-top: 4rem;
+        }
+    }
+    .menu__text{
+        font-size: 3.6rem;
+        @include m.tablet{
+            font-size: 7.4rem;
+            margin-bottom: 2rem;
+        }
+        .texto-marca{
+            color: transparent;
+            background-clip: text;
+            background-image: linear-gradient(to right top, #32974b, #49ad47, #65c23f, #85d730, #a8eb12);
+        }
+        &::after{
+            content: '';
+            display: inline-block;
+            width: 2rem;
+            height: 4rem;
+            background-image: url("/build/img/flower.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            @include m.tablet{
+                width: 6rem;
+                height: 8rem;
+            }
+        }
+        .brilla{
+            color: v.$blanco;
+            background-image: none;
+            text-shadow: 1px 1px 2px v.$negro, 0 0 1em v.$blanco, 0 0 0.2em v.$blanco;
+        }
+    }
+    .menu__slogan{
+        color: v.$blanco;
+        font-family: v.$fuente-cursiva;
+        font-style: italic;
+        font-weight: bold;
     }
 }
