@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web</title>
+    <link rel="stylesheet" href="build/css/app.css">
+    <meta name="description" content="El mejor sitio Web para consultar el clima">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playpen+Sans:wght@300&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="fondo bg_dia"> <!-- Main Section -->
+        <header class="header">
+            <div class="search">
+                <div class="search__bar">
+                    <div class="search__contenedor">
+                        <input id="search__input" class="input input-alt" placeholder="Lindavista CDMX" required="" type="text">
+                        <span class="input-border input-border-alt"></span>
+                    </div>
+                    <div id="search__image" class="search__icon">
+                        <img class="lupa-black" src="build/img/lupaBlack.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="menu contenedor">
+                <div class="menu__logo">
+                    <img src="build/img/logo.svg" alt="Weather Logo">
+                </div>
+                <label class="menu__switch">
+                    <input type="checkbox">
+                    <span id="switch" class="slider"></span>
+                </label>
+            </div>
+        </header>
+    
+        <main class="hero">
+            <div id="mainWeather" class="weather-grid">
+                <div class="temperature">
+                    <div class="temperature-bg">
+                        <div class="temperature__card">
+                            <img src="build/img/temp_max.png" alt="Temperatura Maxima">
+                            <h2 id="maximum-value" class="temperature__maximum loader"></h2>
+                        </div>
+                        <div class="temperature__card">
+                            <img src="build/img/temp_min.png" alt="Temperatura Mínima">
+                            <h2 id="minimum-value" class="temperature__minimum loader"></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="state">
+                    <div class="state-bg">
+                        <div class="state__image">
+                            <img src="build/img/state-Sun.png" alt="Clima">
+                        </div>
+                        <h2 id="state__info">cargando...</h2>
+                        <p id="state__cd">cargando...</p>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="details-bg">
+                        <div class="details__card">
+                            <img src="build/img/temp_regular.png" alt="Temperatura">
+                            <h2 id="details__temperature" class="loader"></h2>
+                        </div>
+                        <div class="details__card">
+                            <img src="build/img/wind.png" alt="Velocidad del Viento">
+                            <h2 id="details__windSpeed" class="loader"></h2>
+                        </div>
+                        <div class="details__card">
+                            <img src="build/img/humidity.png" alt="Nivel de humedad">
+                            <h2 id="details__humidity" class="loader"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mainMoon" class="invisible">
+                <div class="moon">
+                    <div id="moonIcon" class="moon__icon">
+                        <img src="build/img/moon.png" alt="moon">
+                    </div>
+                    <h2 id="moonInfo" class="moon__info loader"></h2>
+                </div>
+            </div>
+        </main>
+        <div id="luciernagas"></div>
+    </div> <!-- Fin Main Section -->
+
+    <section class="todaysForecast">
+        <h2 class="todaysForecast__tittle">Pronostico de <br><span>HOY</span></h2>
+        <div class="forecast__flex translateX">
+            <div class="forecast__right">
+                <h1>></h1>
+            </div>
+            <div class="forecast__left">
+                <h1><</h1>
+            </div>
+            <div id="hour1" class="card">
+                <h3 class="card__hour">12:00 AM</h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24ºC</p>
+            </div>
+            <div id="hour2" class="card">
+                <h3 class="card__hour">12:00 AM</h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24ºC</p>
+            </div>
+            <div id="hour3" class="card">
+                <h3 class="card__hour">12:00 AM</h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24ºC</p>
+            </div>
+            <div id="hour4" class="card">
+                <h3 class="card__hour">12:00 AM</h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour5" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour6" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour7" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour8" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour9" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour10" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour11" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour12" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour13" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour14" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour15" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour16" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour17" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour18" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour19" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour20" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour21" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour22" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour23" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour24" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+            <div id="hour25" class="card">
+                <h3 class="card__hour"></h3>
+                <div class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                </div>
+                <p class="card__grades">24º</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="build/scripts/api.js"></script>
+    <script src="build/scripts/effects.js"></script>
+</body>
+</html>
