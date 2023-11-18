@@ -4,21 +4,25 @@ const luciernagas = document.querySelector("#luciernagas");
 const weatherState = document.querySelector("#mainWeather");
 const moon = document.querySelector("#mainMoon");
 const textMark = document.querySelector(".texto-marca");
+let contClicks = 0;
 
 switchBtn.addEventListener("click", event =>{
+    contClicks++;
     console.log("Click en switch");
 
-    if(fondo.classList.contains("bg_dia")){ //Noche
-        fondo.classList.remove("bg_dia");
-        fondo.classList.add("bg_noche");
-        weatherState.classList.add("invisible");
-        weatherState.classList.remove("weather-grid");
+    if(contClicks % 2 == 0){ //Noche
+        fondo.classList.toggle("bg_dia");
+        fondo.classList.toggle("bg_noche");
+        weatherState.classList.toggle("invisible");
+        weatherState.classList.toggle("weather-grid");
 
-        textMark.classList.remove("texto-marca");
-        textMark.classList.add("brilla");
+        textMark.classList.toggle("texto-marca");
+        textMark.classList.toggle("brilla");
 
-        moon.classList.remove("invisible");
-        moon.classList.add("moon-grid");
+        moon.classList.toggle("invisible");
+        moon.classList.toggle("moon-grid");
+        
+        switchBtn.classList.toggle("switch__mainContainer");
 
         luciernagas.innerHTML = `
         <div class="firefly"></div>
@@ -37,20 +41,9 @@ switchBtn.addEventListener("click", event =>{
         <div class="firefly"></div>
         <div class="firefly"></div>
         `;
-        luciernagas.classList.add("firefly");
-    } else{ //Dia
-        fondo.classList.remove("bg_noche");
-        fondo.classList.add("bg_dia");
-        weatherState.classList.remove("invisible");
-        weatherState.classList.add("weather-grid");
-
-        textMark.classList.add("texto-marca");
-        textMark.classList.remove("brilla");
-
-        moon.classList.add("invisible");
-        moon.classList.remove("moon-grid");
-
-        luciernagas.classList.remove("firefly");
-        luciernagas.innerHTML = "";
+        luciernagas.classList.toggle("firefly");
+        if(fondo.classList.contains("bg_dia")){
+            luciernagas.innerHTML = ``;
+        }
     }
 });

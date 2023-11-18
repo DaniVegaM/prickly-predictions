@@ -55,7 +55,7 @@
       
     .input-border-alt {
         height: 3px;
-        background: linear-gradient(90deg, v.$primario 0%, v.$terciario 50%, v.$secundario 100%);
+        background: linear-gradient(90deg, rgba(255,235,98,1) 0%, rgba(237,228,83,1) 29%, rgba(235,170,17,1) 67%, rgba(255,111,0,1) 100%);
         transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1.00);
     }
       

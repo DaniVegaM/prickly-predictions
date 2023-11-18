@@ -198,9 +198,10 @@ function generarHTMLData(resultado, array){
       case desciel.includes("nublado"):
       case desciel.includes("nuboso"):
       case desciel.includes("nubes"):
+      case desciel.includes("cubierto"):
         weather.innerHTML = `<img src="build/img/sunAndCloud.png" alt="Clima">`;
       break;
-      case desciel.includes("despejado"):
+      case desciel.includes("Despejado"):
       case desciel.includes("limpio"):
       case desciel.includes("soleado"):
       case desciel.includes("sol"):

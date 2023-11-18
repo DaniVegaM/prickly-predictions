@@ -5,7 +5,7 @@
 }
 .bg_dia{
     background-color: #c8b6a3;
-    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #c8b6a3 40px ), repeating-linear-gradient( #c0aa6f34, #b8a56f9c );
+    background-image:  v.$dia;
 }
 .bg_noche{
     background: v.$noche;

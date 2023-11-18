@@ -18,8 +18,8 @@ $grisClaro: #eceeef;
 $luzNoche: 0px 0px 20px 10px rgba(255, 255, 255, 0.8), 0px 0px 40px 20px rgba(255, 255, 255, 0.6), 0px 0px 60px 30px rgba(255, 255, 255, 0.4);
 
 //Fondos
-$dia: linear-gradient(to bottom, #00b4db, #0083b0);
-$noche: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+$dia: repeating-radial-gradient( circle at 0 0, transparent 0, #c8b6a3 40px ), repeating-linear-gradient( #c0aa6f34, #b8a56f9c );
+$noche: repeating-radial-gradient( circle at 0 0, transparent 0, #00171f 40px ), repeating-linear-gradient( #041b26, #07202e );
 
 $contrasteDia: linear-gradient(to top, #2193b0, #6dd5ed);
 $contrasteDia2: linear-gradient(to top, #b2fefa, #0ed2f7);
