@@ -17,9 +17,15 @@ window.addEventListener("load", currentLocation);
 const searchBar = document.querySelector("#search__input");
 const searchIcon = document.querySelector("#search__image");
 
-searchIcon.addEventListener('click', event =>{
+searchIcon.addEventListener('click', event =>{ //If the user clicks on the loupe
     event.preventDefault();
     searchLocation();
+});
+searchBar.addEventListener('keyup', event =>{ //Ïf the user push "Enter"
+    if (event.keyCode === 13){
+      event.preventDefault();
+      searchLocation();
+    }
 });
 
 function searchLocation(){
