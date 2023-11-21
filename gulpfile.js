@@ -85,9 +85,8 @@ exports.images = images;
 exports.versionWebp = versionWebp;
 exports.versionAvif = versionAvif;
 
+//To execute when you modify SASS files or images
+exports.dev = dev;
 
 //To execute the first time when you create a project
 exports.default = series(images, versionWebp, versionAvif, css, dev); //To compile just writing "gulp"
-
-//To execute when you modify SASS files or images
-exports.dev = dev;
