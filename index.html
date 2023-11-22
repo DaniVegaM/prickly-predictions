@@ -111,14 +111,14 @@
         <div id="luciernagas"></div>
     </div> <!-- Fin Main Section -->
 
-    <section class="todaysForecast">
+    <section id="seccionDias" class="todaysForecast">
         <h2 class="todaysForecast__tittle">Pronostico de</h2>
         <div class="todaysForecast__flex">
             <div id="day1" class="card">
                 <h2 class="card__tittle">Mañana</h2>
                 <h3 id="desciel1" class="card__descripcion">Cielo nublado</h3>
-                <div class="card__image">
-                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                <div id="card1__img" class="card__image">
+                    <img src="build/img/cloud.png" alt="Clima del dia">
                 </div>
                 <div class="card__flex">
                     <p id="tmax1" class="card__grades-Max">28ºC</p>
@@ -128,8 +128,8 @@
             <div id="day2" class="card">
                 <h2 class="card__tittle">Pasado mañana</h2>
                 <h3 id="desciel2" class="card__descripcion">Cielo nublado</h3>
-                <div class="card__image">
-                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                <div id="card2__img" class="card__image">
+                    <img src="build/img/electricStorm.png" alt="Clima del dia">
                 </div>
                 <div class="card__flex">
                     <p id="tmax2" class="card__grades-Max">28ºC</p>
@@ -139,13 +139,37 @@
             <div id="day3" class="card">
                 <h2 class="card__tittle">Postmañana</h2>
                 <h3 id="desciel3" class="card__descripcion">Cielo nublado</h3>
-                <div class="card__image">
-                    <img src="build/img/cloud.png" alt="Clima de la hora">
+                <div id="card3__img" class="card__image">
+                    <img src="build/img/snow.png" alt="Clima">
                 </div>
                 <div class="card__flex">
                     <p id="tmax3" class="card__grades-Max">28ºC</p>
                     <p id="tmin3" class="card__grades-Min">24ºC</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="moonFacts" class="moonFacts invisible">
+        <h2 class="moonFacts__tittle">Sabias que<br><span>¿?</span></h2>
+        <div class="moonFacts__flex">
+            <div class="moon__card">
+                <div class="moon__card-image1">
+                    
+                </div>
+                <p class="moon__card-text">Ultimos estudios demuestran que la luna no emite luz propia, en realidad esta reflejando la luz del sol.</p>
+            </div>
+            <div class="moon__card">
+                <div class="moon__card-image2">
+                    
+                </div>
+                <p class="moon__card-text">Ha llegando más gente a la Luna que a las profundidades de los océanos.</p>
+            </div>
+            <div class="moon__card">
+                <div class="moon__card-image3">
+                    
+                </div>
+                <p class="moon__card-text"> La atracción gravitacional de la Luna hace que los océanos se muevan, creando mareas altas y bajas.</p>
             </div>
         </div>
     </section>

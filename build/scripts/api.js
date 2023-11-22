@@ -33,9 +33,6 @@ function searchLocation(){
     fetch(apiData).then(respuesta => respuesta.json()).then(resultado => {
       generarHTMLData(resultado, stringArray);
     });
-    // fetch(apiData).then(respuesta => respuesta.json()).then(resultado => {
-    //   generarHTMLDays(resultado, stringArray);
-    // });
 }
 
 //Tracking your Current Location
@@ -122,6 +119,8 @@ function currentLocation(){ //Get Latitude and Longitude
 function consultApi(){ //Get data from API
     console.log("Consultando API");
 
+    //The moon information is static beacuse we can´t get the latitude and longitude of searchBar input
+    /* well, we coud connect to google maps api to get that information but it asks us for credit card */
     const apiMoon = `https://api.tutiempo.net/json/?lan=es&apid=${apiKey}&ll=${latitude},${longitude}`;
 
     fetch(apiData)
@@ -132,13 +131,6 @@ function consultApi(){ //Get data from API
                 // generarHTMLDays(resultado, []); //no tiene caso poner otro caso porque puedo poner todo en la misma funcion
             })
                     .catch(error => console.error("Error al obtener datos del clima:", error));
-    // fetch(apiData)
-    //     .then(respuesta => respuesta.json())
-    //         .then(resultado => {
-    //             console.log(resultado);
-    //             generarHTMLDays(resultado, []);
-    //         })
-    //                 .catch(error => console.error("Error al obtener datos del clima:", error));
     
     fetch(apiMoon)
         .then(respuesta => respuesta.json())
@@ -161,6 +153,10 @@ const weatherCD = document.querySelector("#state__cd");
 const weatherMN = document.querySelector("#state__mn");
 
 //Todays Forecast
+const cimage1 = document.querySelector("#card1__img");
+const cimage2 = document.querySelector("#card2__img");
+const cimage3 = document.querySelector("#card3__img");
+
 const tmax1 = document.querySelector("#tmax1");
 const tmin1 = document.querySelector("#tmin1");
 const desciel1 = document.querySelector("#desciel1");
@@ -189,10 +185,6 @@ function generarHTMLData(resultado, array){
 
     let locationFound = getDataLocation(resultado, array);
 
-    //Destructuring to get JSON DATA
-    // console.log("Latitud :" + latitude);
-    // console.log("Longitud :" + longitude);
-
       //Destructuring to get data from locationFound
       const {nmun, nes, desciel, tmax, tmin, velvien} = locationFound;
 
@@ -203,44 +195,7 @@ function generarHTMLData(resultado, array){
       mainName.innerHTML = `${desciel}`;
       weatherCD.innerHTML = `${nmun}, <br><span>${nes}</span>`;
 
-      //Weather images
-     switch(true){
-      case desciel.includes("nublado"):
-      case desciel.includes("nuboso"):
-      case desciel.includes("nubes"):
-      case desciel.includes("cubierto"):
-        weather.innerHTML = `<img src="build/img/sunAndCloud.png" alt="Clima">`;
-      break;
-      case desciel.includes("Despejado"):
-      case desciel.includes("limpio"):
-      case desciel.includes("soleado"):
-      case desciel.includes("sol"):
-        weather.innerHTML = `<img src="build/img/sun.png" alt="Clima">`;
-      break;
-      case desciel.includes("lluvia"):
-      case desciel.includes("lluvioso"):
-      case desciel.includes("chubascos"):
-      case desciel.includes("chubascoso"):
-        weather.innerHTML = `<img src="build/img/rain.png" alt="Clima">`;
-      break;
-      case desciel.includes("tormenta"):
-      case desciel.includes("electrica"):
-      case desciel.includes("electrico"):
-        weather.innerHTML = `<img src="build/img/electricStorm.png" alt="Clima">`;
-      break;
-      case desciel.includes("nevado"):
-      case desciel.includes("nieve"):
-        weather.innerHTML = `<img src="build/img/snow.png" alt="Clima">`;
-      break;
-      case desciel.includes("viento"):
-      case desciel.includes("ventoso"):
-        weather.innerHTML = `<img src="build/img/wind.png" alt="Clima">`;
-      break;
-      case desciel.includes("tornado"):
-        case desciel.includes("vientos fuertes"):
-        weather.innerHTML = `<img src="build/img/tornado.png" alt="Clima">`;
-      break;
-    }
+      imgWheater(desciel, weather);
 
     //Days Section
     //Destructuring to get JSON DATA
@@ -249,11 +204,11 @@ function generarHTMLData(resultado, array){
     day2 = getDataDays(resultado, array, 2);
     day3 = getDataDays(resultado, array, 3);
 
-    console.log("Dia 1 daaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log("Dia 1");
     console.log(day1);
-    console.log("Dia 2 daaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log("Dia 2");
     console.log(day2);
-    console.log("Dia 3 daaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log("Dia 3");
     console.log(day3);
 
     const tmaxD1 = day1.tmax;
@@ -268,41 +223,63 @@ function generarHTMLData(resultado, array){
     const tminD3 = day3.tmin;
     const descielD3 = day3.desciel;
 
-    tmax1.innerHTML(`Max: ${tmaxD1}`);
-    tmax2.innerHTML(`Max: ${tmaxD2}`);
-    tmax3.innerHTML(`Max: ${tmaxD3}`);
+    tmax1.innerHTML = `Max:<br>${tmaxD1}º`;
+    tmax2.innerHTML = `Max:<br>${tmaxD2}º`;
+    tmax3.innerHTML = `Max:<br>${tmaxD3}º`;
 
-    tmin1.innerHTML(`Min: ${tminD1}`);
-    tmin2.innerHTML(`Min: ${tminD2}`);
-    tmin3.innerHTML(`Min: ${tminD3}`);
+    tmin1.innerHTML = `Min:<br>${tminD1}º`;
+    tmin2.innerHTML = `Min:<br>${tminD2}º`;
+    tmin3.innerHTML = `Min:<br>${tminD3}º`;
 
-    descielD1.innerHTML(`${desciel1}`);
-    descielD2.innerHTML(`${desciel2}`);
-    descielD3.innerHTML(`${desciel3}`);
+    desciel1.innerHTML = `${descielD1}`;
+    desciel2.innerHTML = `${descielD2}`;
+    desciel3.innerHTML = `${descielD3}`;
+
+    imgWheater(descielD1, cimage1);
+    imgWheater(descielD2, cimage2);
+    imgWheater(descielD3, cimage3);
 }
 
-// function generarHTMLDays(resultado, array){
-//   //Destructuring to get JSON DATA
-//   let day1, day2, day3, day4, day5, day6, day7;
-//   getDataDays(resultado, array, day1, day2, day3, day4, day5, day6, day7);
-
-//   // let i;
-//   // console.log("Latitud :" + latitude);
-//   // console.log("Longitud :" + longitude);
-  
-//   // let locationFound = getDataLocation(resultado, array);
-//   // // console.log("Sí está");
-//   // // console.log(locationFound);
-//   // const {dsem} = locationFound;
-
-//   //   //Destructuring to get data from locationFound
-//   //   const {temp, hr} = locationFound;
-//   //   // console.log("La temperatura es: " + temp);
-    
-//     // //Insert HTML
-//     // mainTemp.innerHTML = `${temp}ºC`;
-//     // mainHumidity.innerHTML = `${hr}%`;
-// }
+function imgWheater(desciel, weather){
+  //Weather images
+  switch(true){
+    case desciel.includes("nublado"):
+    case desciel.includes("nuboso"):
+    case desciel.includes("nubes"):
+    case desciel.includes("cubierto"):
+      weather.innerHTML = `<img src="build/img/sunAndCloud.png" alt="Clima">`;
+    break;
+    case desciel.includes("Despejado"):
+    case desciel.includes("limpio"):
+    case desciel.includes("soleado"):
+    case desciel.includes("sol"):
+      weather.innerHTML = `<img src="build/img/sun.png" alt="Clima">`;
+    break;
+    case desciel.includes("lluvia"):
+    case desciel.includes("lluvioso"):
+    case desciel.includes("chubascos"):
+    case desciel.includes("chubascoso"):
+      weather.innerHTML = `<img src="build/img/rain.png" alt="Clima">`;
+    break;
+    case desciel.includes("tormenta"):
+    case desciel.includes("electrica"):
+    case desciel.includes("electrico"):
+      weather.innerHTML = `<img src="build/img/electricStorm.png" alt="Clima">`;
+    break;
+    case desciel.includes("nevado"):
+    case desciel.includes("nieve"):
+      weather.innerHTML = `<img src="build/img/snow.png" alt="Clima">`;
+    break;
+    case desciel.includes("viento"):
+    case desciel.includes("ventoso"):
+      weather.innerHTML = `<img src="build/img/wind.png" alt="Clima">`;
+    break;
+    case desciel.includes("tornado"):
+      case desciel.includes("vientos fuertes"):
+      weather.innerHTML = `<img src="build/img/tornado.png" alt="Clima">`;
+    break;
+  }
+}
 
 function generarHTMLMoon(resultado){
   moonInfo.classList.remove("loader");

@@ -4,6 +4,9 @@ const luciernagas = document.querySelector("#luciernagas");
 const weatherState = document.querySelector("#mainWeather");
 const moon = document.querySelector("#mainMoon");
 const textMark = document.querySelector(".texto-marca");
+const daysSection = document.querySelector("#seccionDias");
+const moonSection = document.querySelector("#moonFacts");
+
 let contClicks = 0;
 
 switchBtn.addEventListener("click", event =>{
@@ -15,6 +18,10 @@ switchBtn.addEventListener("click", event =>{
         fondo.classList.toggle("bg_noche");
         weatherState.classList.toggle("invisible");
         weatherState.classList.toggle("weather-grid");
+
+        daysSection.classList.toggle("invisible");
+
+        moonSection.classList.toggle("invisible");
 
         textMark.classList.toggle("texto-marca");
         textMark.classList.toggle("brilla");

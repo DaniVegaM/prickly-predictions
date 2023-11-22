@@ -2,13 +2,13 @@
 @use "base/mixins" as m;
 
 .todaysForecast{
-    background-color: v.$terciario;
+    background-color: rgb(246, 242, 255); opacity: 0.8; background-image: radial-gradient(rgb(210, 174, 43) 1px, transparent 1px), radial-gradient(rgb(210, 174, 43) 1px, rgb(246, 242, 255) 1px); background-size: 30px 30px; background-position: 0px 0px, 15px 15px;
     padding: 10rem 0;
 
     .todaysForecast__tittle{
         text-align: center;
         margin-bottom: 4rem;
-        color: v.$blanco;
+        color: v.$terciario;
         text-transform: uppercase;
         font-size: 2.6rem;
         span{ //Hoy
@@ -20,10 +20,10 @@
     }
 
     .todaysForecast__flex{
+        max-width: 90%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        padding: 6rem;
         margin: 0 auto;
         text-align: center;
 
@@ -38,8 +38,8 @@
         flex-direction: column;
         justify-content: space-evenly;
         background-color: v.$secundario;
-        padding: 4rem;
-        border-radius: 15%;
+        padding: 2rem;
+        border-radius: 5rem;
         color: v.$blanco;
         margin-bottom: 4rem;
         @include m.tablet{

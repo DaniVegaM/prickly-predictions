@@ -1,0 +1,71 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+.moonFacts{
+    background-color: rgb(246, 242, 255); opacity: 0.8; background-image: radial-gradient(rgb(5, 16, 58) 2px, transparent 2px), radial-gradient(rgb(5, 16, 58) 2px, rgb(246, 242, 255) 2px); background-size: 15px 15px;
+    .moonFacts__tittle{
+        text-align: center;
+        padding-top: 10rem;
+        font-size: 6rem;
+        span{
+            font-size: 10rem;
+            color: rgb(9, 1, 54);
+        }
+    }
+    .moonFacts__flex{
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        padding: 10rem 0;
+        gap: 4rem;
+
+        @include m.tablet{
+            flex-direction: row;
+            gap: 2rem;
+            text-align: center;
+        }
+        .moon__card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25rem;
+            text-align: center;
+            @include m.tablet{
+                width: calc(100% / 3);
+
+            }
+        }
+        .moon__card-text{
+            font-size: 2rem;
+            background-color: v.$blanco;
+            height: 18rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            @include m.tablet{
+                font-size: 1.6rem;
+                padding: 2rem;
+            }
+        }
+        .moon__card-image1, .moon__card-image2, .moon__card-image3{
+            width: 100%;
+            height: 18rem;
+            overflow: hidden;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .moon__card-image1{
+            background-image: url("../img/moon.jpg");
+        }
+        .moon__card-image2{
+            background-image: url("../img/ocean.jpg");
+        }
+        .moon__card-image3{
+            background-image: url("../img/waves.jpg");
+        }
+    }
+}
