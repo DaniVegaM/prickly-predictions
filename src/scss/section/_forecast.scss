@@ -3,9 +3,6 @@
 
 .todaysForecast{
     background-color: v.$terciario;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     padding: 10rem 0;
 
     .todaysForecast__tittle{
@@ -17,70 +14,74 @@
         span{ //Hoy
             font-size: 6rem;
         }
+        @include m.tablet{
+            font-size: 5.6rem;
+        }
     }
 
-    .forecast__flex{
-        white-space: nowrap;
-        overflow-x: hidden;
-        padding: 0 2rem;
-        position: relative;
-        .forecast__right, .forecast__left{
-            margin: 0;
-            position: absolute;
-        }
-        .forecast__right{
-            right: 2rem;
-            bottom: 35%;
-            @include m.tablet{
-                bottom: 30%;
-            }
-        }
-        .forecast__left{
-            left: 2rem;
-            bottom: 35%;
-            @include m.tablet{
-                bottom: 30%;
-            }
-        }
-        .card{
-            width: 30rem;
-            display: inline-block;
-            background: v.$dia;
-            border-radius: 15%;
-            padding: 2.5rem ;
-            margin-right: 1rem;
-            @include m.tablet{
-                width: 25rem;
-                margin-right: 1.5rem;
-            }
-            @include m.desktop{
-                width: 15rem;
-                margin-right: 2rem;
-            }
-            .card__hour{
-                font-size: 4rem;
-                text-align: center;
-                margin-bottom: 2rem;
-                color: v.$blanco;
-                @include m.tablet{
-                    font-size: 2.2rem;
-                }
-            }
-            .card__grades{
-                font-size: 3rem;
-                text-align: center;
-                margin-top: 2rem;
-                color: v.$blanco;
-            }
-        }
-    
+    .todaysForecast__flex{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 6rem;
+        margin: 0 auto;
+        text-align: center;
+
         @include m.tablet{
             flex-direction: row;
+            gap: 2rem;
         }
     }
-}
 
-//To do the animation when the user clicks on an arrow
-.translateX{
-    
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: v.$secundario;
+        padding: 4rem;
+        border-radius: 15%;
+        color: v.$blanco;
+        margin-bottom: 4rem;
+        @include m.tablet{
+            margin-bottom: 0;
+        }
+
+        .card__flex{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5rem;
+            flex-direction: column;
+            p{
+                color: v.$blanco;
+            }
+            .card__grades-Max{
+                margin: 1rem 0;
+
+                @include m.desktop{
+                    margin: 0;
+                }
+            }
+            @include m.desktop{
+                flex-direction: row;
+            }
+        }
+        .card__tittle{
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            @include m.tablet{
+                font-size: 2.6rem;
+            }
+            @include m.desktop{
+                font-size: 3.2rem;
+            }
+        }
+        .card__descripcion{
+            font-size: 2rem;
+            font-family: v.$fuente-textos;
+        }
+        .card__image{
+            margin: 2rem 0;
+        }
+    }
+
 }

@@ -5,7 +5,6 @@ let latitude;
 let longitude;
 
 const apiData = "build/scripts/apiSMNData.json";
-const apiDays = "build/scripts/apiSMNDays.json";
 
 //Connecting API tuTiempo.net for the Moon API
 let apiKey = "qxEz4qazaXatWd2";
@@ -34,9 +33,9 @@ function searchLocation(){
     fetch(apiData).then(respuesta => respuesta.json()).then(resultado => {
       generarHTMLData(resultado, stringArray);
     });
-    fetch(apiDays).then(respuesta => respuesta.json()).then(resultado => {
-      generarHTMLDays(resultado, stringArray);
-    });
+    // fetch(apiData).then(respuesta => respuesta.json()).then(resultado => {
+    //   generarHTMLDays(resultado, stringArray);
+    // });
 }
 
 //Tracking your Current Location
@@ -130,15 +129,16 @@ function consultApi(){ //Get data from API
             .then(resultado => {
                 console.log(resultado);
                 generarHTMLData(resultado, []);
+                // generarHTMLDays(resultado, []); //no tiene caso poner otro caso porque puedo poner todo en la misma funcion
             })
                     .catch(error => console.error("Error al obtener datos del clima:", error));
-    fetch(apiDays)
-        .then(respuesta => respuesta.json())
-            .then(resultado => {
-                console.log(resultado);
-                generarHTMLDays(resultado, []);
-            })
-                    .catch(error => console.error("Error al obtener datos del clima:", error));
+    // fetch(apiData)
+    //     .then(respuesta => respuesta.json())
+    //         .then(resultado => {
+    //             console.log(resultado);
+    //             generarHTMLDays(resultado, []);
+    //         })
+    //                 .catch(error => console.error("Error al obtener datos del clima:", error));
     
     fetch(apiMoon)
         .then(respuesta => respuesta.json())
@@ -161,7 +161,17 @@ const weatherCD = document.querySelector("#state__cd");
 const weatherMN = document.querySelector("#state__mn");
 
 //Todays Forecast
-const hour = document.querySelector(".card__hour");
+const tmax1 = document.querySelector("#tmax1");
+const tmin1 = document.querySelector("#tmin1");
+const desciel1 = document.querySelector("#desciel1");
+
+const tmax2 = document.querySelector("#tmax2");
+const tmin2 = document.querySelector("#tmin2");
+const desciel2 = document.querySelector("#desciel2");
+
+const tmax3 = document.querySelector("#tmax3");
+const tmin3 = document.querySelector("#tmin3");
+const desciel3 = document.querySelector("#desciel3");
 
 //Moon info with API: "tutiempo.net"
 const moonIcon = document.querySelector("#moonIcon");
@@ -186,7 +196,7 @@ function generarHTMLData(resultado, array){
       //Destructuring to get data from locationFound
       const {nmun, nes, desciel, tmax, tmin, velvien} = locationFound;
 
-      //Inesert HTML
+      //Insert HTML
       maxTemp.innerHTML = `${tmax}ºC`;
       minTemp.innerHTML = `${tmin}ºC`;
       windSpeed.innerHTML = `${velvien} km/h`;
@@ -231,26 +241,68 @@ function generarHTMLData(resultado, array){
         weather.innerHTML = `<img src="build/img/tornado.png" alt="Clima">`;
       break;
     }
+
+    //Days Section
+    //Destructuring to get JSON DATA
+    let day1, day2, day3;
+    day1 = getDataDays(resultado, array, 1);
+    day2 = getDataDays(resultado, array, 2);
+    day3 = getDataDays(resultado, array, 3);
+
+    console.log("Dia 1 daaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log(day1);
+    console.log("Dia 2 daaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log(day2);
+    console.log("Dia 3 daaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log(day3);
+
+    const tmaxD1 = day1.tmax;
+    const tminD1 = day1.tmin;
+    const descielD1 = day1.desciel;
+
+    const tmaxD2 = day2.tmax;
+    const tminD2 = day2.tmin;
+    const descielD2 = day2.desciel;
+
+    const tmaxD3 = day3.tmax;
+    const tminD3 = day3.tmin;
+    const descielD3 = day3.desciel;
+
+    tmax1.innerHTML(`Max: ${tmaxD1}`);
+    tmax2.innerHTML(`Max: ${tmaxD2}`);
+    tmax3.innerHTML(`Max: ${tmaxD3}`);
+
+    tmin1.innerHTML(`Min: ${tminD1}`);
+    tmin2.innerHTML(`Min: ${tminD2}`);
+    tmin3.innerHTML(`Min: ${tminD3}`);
+
+    descielD1.innerHTML(`${desciel1}`);
+    descielD2.innerHTML(`${desciel2}`);
+    descielD3.innerHTML(`${desciel3}`);
 }
 
-function generarHTMLDays(resultado, array){
-  //Destructuring to get JSON DATA
-  let i;
-  // console.log("Latitud :" + latitude);
-  // console.log("Longitud :" + longitude);
+// function generarHTMLDays(resultado, array){
+//   //Destructuring to get JSON DATA
+//   let day1, day2, day3, day4, day5, day6, day7;
+//   getDataDays(resultado, array, day1, day2, day3, day4, day5, day6, day7);
 
-  let locationFound = getDataLocation(resultado, array);
-    // console.log("Sí está");
-    // console.log(locationFound);
+//   // let i;
+//   // console.log("Latitud :" + latitude);
+//   // console.log("Longitud :" + longitude);
+  
+//   // let locationFound = getDataLocation(resultado, array);
+//   // // console.log("Sí está");
+//   // // console.log(locationFound);
+//   // const {dsem} = locationFound;
 
-    //Destructuring to get data from locationFound
-    const {temp, hr} = locationFound;
-    // console.log("La temperatura es: " + temp);
+//   //   //Destructuring to get data from locationFound
+//   //   const {temp, hr} = locationFound;
+//   //   // console.log("La temperatura es: " + temp);
     
-    //Insert HTML
-    mainTemp.innerHTML = `${temp}ºC`;
-    mainHumidity.innerHTML = `${hr}%`;
-}
+//     // //Insert HTML
+//     // mainTemp.innerHTML = `${temp}ºC`;
+//     // mainHumidity.innerHTML = `${hr}%`;
+// }
 
 function generarHTMLMoon(resultado){
   moonInfo.classList.remove("loader");
@@ -314,7 +366,7 @@ function generarHTMLMoon(resultado){
     }
 }
 
-function getDataLocation(resultado, array){
+function getDataLocation(resultado, array){ //This function returns the object according to your location or the location in search bar
   let locationFound = {};
   const tolerance = 0.1;
   let i = 0;
@@ -361,6 +413,52 @@ function getDataLocation(resultado, array){
   console.log("Datos de la API de la ubicación dinamica");
   console.log("LocationFound es: ");
   console.log(locationFound);
+}
+
+function getDataDays(resultado, array, numDay){ //This function returns the object according to your location or the location in search bar
+  let locationFound = {};
+  const tolerance = 0.1;
+  let i = 0;
+  let res; //return variable
+
+  if(!(array.length === 0)){ //If there is a value in the search-bar
+    while(i < array.length){
+      switch(i){
+        case 0: //Just nmun
+          res = resultado.find(element => (normalizeString(element.nmun) == normalizeString(array[i])) && element.ndia == numDay);
+          if(
+            res === undefined
+            ){ //if is an state
+            res = resultado.find(element => (normalizeString(element.nes) == normalizeString(array[i])) && element.ndia == numDay);
+          }
+        break;
+        
+        case 1: //nmun and nes
+          res = resultado.find(element => (normalizeString(element.nmun) == normalizeString(array[i-1])) && normalizeString(element.nes) == normalizeString(array[i]) && element.ndia == numDay);
+          if(
+            res === undefined
+            ){ //Just see the nmun
+            res = resultado.find(element => (normalizeString(element.nmun) == normalizeString(array[i-1])) && element.ndia == numDay);
+          }
+        break;
+      }
+
+      if(
+            (res === undefined)
+        && i == (array.length - 1)){ //If the location isn`t found
+        Swal.fire({
+          icon: "error",
+          title: "Oh no!",
+          text: "No encontramos esa ciudad",
+          footer: '<p class="textoPequeno">Lo sentimos mucho</p>'
+        });
+      }
+      i++;
+    };
+  } else{
+    res = resultado.find(element => (Math.abs(element.lat - latitude) < tolerance && Math.abs(element.lon - longitude) < tolerance) && element.ndia == numDay);
+  }
+  return res;
 }
 
 //Utilities
