@@ -143,7 +143,6 @@ function consultApi(){ //Get data from API
 
 const maxTemp = document.querySelector("#maximum-value");
 const minTemp = document.querySelector("#minimum-value");
-const mainTemp = document.querySelector("#details__temperature");
 const windSpeed = document.querySelector("#details__windSpeed"); 
 const mainHumidity = document.querySelector("#details__humidity");
 const mainName = document.querySelector("#state__info");
@@ -151,6 +150,7 @@ const mainName = document.querySelector("#state__info");
 const weather = document.querySelector(".state__image");
 const weatherCD = document.querySelector("#state__cd");
 const weatherMN = document.querySelector("#state__mn");
+const stateDay = document.querySelector("#state__day");
 
 //Todays Forecast
 const cimage1 = document.querySelector("#card1__img");
@@ -160,14 +160,20 @@ const cimage3 = document.querySelector("#card3__img");
 const tmax1 = document.querySelector("#tmax1");
 const tmin1 = document.querySelector("#tmin1");
 const desciel1 = document.querySelector("#desciel1");
+const wind1 = document.querySelector("#wind1");
+const humidity1 = document.querySelector("#humidity1");
 
 const tmax2 = document.querySelector("#tmax2");
 const tmin2 = document.querySelector("#tmin2");
 const desciel2 = document.querySelector("#desciel2");
+const wind2 = document.querySelector("#wind2");
+const humidity2 = document.querySelector("#humidity2");
 
 const tmax3 = document.querySelector("#tmax3");
 const tmin3 = document.querySelector("#tmin3");
 const desciel3 = document.querySelector("#desciel3");
+const wind3 = document.querySelector("#wind3");
+const humidity3 = document.querySelector("#humidity3");
 
 //Moon info with API: "tutiempo.net"
 const moonIcon = document.querySelector("#moonIcon");
@@ -179,21 +185,26 @@ function generarHTMLData(resultado, array){
     //Bye Loader
     maxTemp.classList.remove("loader");
     minTemp.classList.remove("loader");
-    mainTemp.classList.remove("loader");
     windSpeed.classList.remove("loader");
     mainHumidity.classList.remove("loader");
 
     let locationFound = getDataLocation(resultado, array);
 
       //Destructuring to get data from locationFound
-      const {nmun, nes, desciel, tmax, tmin, velvien} = locationFound;
+      const {nmun, nes, desciel, tmax, tmin, velvien, probprec, dloc} = locationFound;
 
-      //Insert HTML
-      maxTemp.innerHTML = `${tmax}ºC`;
-      minTemp.innerHTML = `${tmin}ºC`;
+      //Insert HTML (Main section)
+      maxTemp.innerHTML = `${Math.floor(tmax)}ºC`;
+      minTemp.innerHTML = `${Math.floor(tmin)}ºC`;
       windSpeed.innerHTML = `${velvien} km/h`;
+      mainHumidity.innerHTML = `${Math.floor(probprec)}%`;
       mainName.innerHTML = `${desciel}`;
       weatherCD.innerHTML = `${nmun}, <br><span>${nes}</span>`;
+
+      const localDay = dloc.slice(6,8);
+      const localMonth = generateMonth(dloc.slice(4,6));
+      const localYear = dloc.slice(0,4);
+      stateDay.innerHTML = `${localDay} de ${localMonth} <br>del ${localYear}`;
 
       imgWheater(desciel, weather);
 
@@ -214,26 +225,40 @@ function generarHTMLData(resultado, array){
     const tmaxD1 = day1.tmax;
     const tminD1 = day1.tmin;
     const descielD1 = day1.desciel;
+    const windD1 = day1.velvien;
+    const humidityD1 = day1.probprec;
 
     const tmaxD2 = day2.tmax;
     const tminD2 = day2.tmin;
     const descielD2 = day2.desciel;
+    const windD2 = day1.velvien;
+    const humidityD2 = day1.probprec;
 
     const tmaxD3 = day3.tmax;
     const tminD3 = day3.tmin;
     const descielD3 = day3.desciel;
+    const windD3 = day1.velvien;
+    const humidityD3 = day1.probprec;
 
-    tmax1.innerHTML = `Max:<br>${tmaxD1}º`;
-    tmax2.innerHTML = `Max:<br>${tmaxD2}º`;
-    tmax3.innerHTML = `Max:<br>${tmaxD3}º`;
+    tmax1.innerHTML = `Max:<br><span>${Math.floor(tmaxD1)}º</span>`;
+    tmax2.innerHTML = `Max:<br><span>${Math.floor(tmaxD2)}º</span>`;
+    tmax3.innerHTML = `Max:<br><span>${Math.floor(tmaxD3)}º</span>`;
 
-    tmin1.innerHTML = `Min:<br>${tminD1}º`;
-    tmin2.innerHTML = `Min:<br>${tminD2}º`;
-    tmin3.innerHTML = `Min:<br>${tminD3}º`;
+    tmin1.innerHTML = `Min:<br><span>${Math.floor(tminD1)}º</span>`;
+    tmin2.innerHTML = `Min:<br><span>${Math.floor(tminD2)}º</span>`;
+    tmin3.innerHTML = `Min:<br><span>${Math.floor(tminD3)}º</span>`;
 
     desciel1.innerHTML = `${descielD1}`;
     desciel2.innerHTML = `${descielD2}`;
     desciel3.innerHTML = `${descielD3}`;
+
+    wind1.innerHTML = `Vel. Viento: <br><span>${windD1} km/h</span>`;
+    wind2.innerHTML = `Vel. Viento: <br><span>${windD2} km/h</span>`;
+    wind3.innerHTML = `Vel. Viento: <br><span>${windD3} km/h</span>`;
+
+    humidity1.innerHTML = `Prob. de Precipitación: <br><span>${Math.floor(humidityD1)}%</span>`;
+    humidity2.innerHTML = `Prob. de Precipitación: <br><span>${Math.floor(humidityD2)}%</span>`;
+    humidity3.innerHTML = `Prob. de Precipitación: <br><span>${Math.floor(humidityD3)}%</span>`;
 
     imgWheater(descielD1, cimage1);
     imgWheater(descielD2, cimage2);
@@ -442,4 +467,45 @@ function getDataDays(resultado, array, numDay){ //This function returns the obje
 function normalizeString(cadena) {
   //We use Regular Expressions (REGEX) to normalize our strings
   return ((cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "")).toLowerCase()).replace(/\s/g, "");
+}
+
+function generateMonth(numMonth){
+  switch(numMonth){
+    case "1":
+      return "Enero";
+    break;
+    case "2":
+      return "Febrero";
+    break;
+    case "3":
+      return "Marzo";
+    break;
+    case "4":
+      return "Abril";
+    break;
+    case "5":
+      return "Mayo";
+    break;
+    case "6":
+      return "Junio";
+    break;
+    case "7":
+      return "Julio";
+    break;
+    case "8":
+      return "Agosto";
+    break;
+    case "9":
+      return "Septiembre";
+    break;
+    case "10":
+      return "Octubre";
+    break;
+    case "11":
+      return "Noviembre";
+    break;
+    case "12":
+      return "Diciembre";
+    break;
+  }
 }

@@ -8,7 +8,7 @@
     <meta name="description" content="El mejor sitio Web para consultar el clima">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playpen+Sans:wght@300&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat&family=Patrick+Hand+SC&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -80,20 +80,18 @@
                         </div>
                         <h2 id="state__info">cargando...</h2>
                         <p id="state__cd">cargando...</p>
+                        <p><br></p>
+                        <p id="state__day">cargando...</p>
                     </div>
                 </div>
                 <div class="details">
                     <div class="details-bg">
                         <div class="details__card">
-                            <img src="build/img/temp_regular.png" alt="Temperatura">
-                            <h2 id="details__temperature" class="loader"></h2>
-                        </div>
-                        <div class="details__card">
                             <img src="build/img/wind.png" alt="Velocidad del Viento">
                             <h2 id="details__windSpeed" class="loader"></h2>
                         </div>
                         <div class="details__card">
-                            <img src="build/img/humidity.png" alt="Nivel de humedad">
+                            <img src="build/img/humidity.png" alt="Probabilidad de precipitación">
                             <h2 id="details__humidity" class="loader"></h2>
                         </div>
                     </div>
@@ -113,18 +111,27 @@
 
     <section id="seccionDias" class="todaysForecast">
         <h2 class="todaysForecast__tittle">Pronostico de</h2>
-        <div class="todaysForecast__flex">
-            <div id="day1" class="card">
-                <h2 class="card__tittle">Mañana</h2>
-                <h3 id="desciel1" class="card__descripcion">Cielo nublado</h3>
-                <div id="card1__img" class="card__image">
+
+        <div class="todaysForecast__flex1">
+            <div id="day1" class="card1">
+                <h2 class="card__tittle1">Mañana</h2>
+                <h3 id="desciel1" class="card__descripcion1">Cielo nublado</h3>
+                <div id="card1__img" class="card__image1">
                     <img src="build/img/cloud.png" alt="Clima del dia">
                 </div>
-                <div class="card__flex">
-                    <p id="tmax1" class="card__grades-Max">28ºC</p>
-                    <p id="tmin1" class="card__grades-Min">24ºC</p>
+                <div class="card__flex1">
+                    <div class="card__inside1">
+                        <p id="tmax1" class="card__grades-Max1">28ºC</p>
+                        <p id="tmin1" class="card__grades-Min1">24ºC</p>
+                    </div>
+                    <div class="card__inside1">
+                        <p id="wind1" class="card__grades-Max1">28ºC</p>
+                        <p id="humidity1" class="card__grades-Min1">24ºC</p>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="todaysForecast__flex">
             <div id="day2" class="card">
                 <h2 class="card__tittle">Pasado mañana</h2>
                 <h3 id="desciel2" class="card__descripcion">Cielo nublado</h3>
@@ -132,8 +139,14 @@
                     <img src="build/img/electricStorm.png" alt="Clima del dia">
                 </div>
                 <div class="card__flex">
-                    <p id="tmax2" class="card__grades-Max">28ºC</p>
-                    <p id="tmin2" class="card__grades-Min">24ºC</p>
+                    <div class="card__inside">
+                        <p id="tmax2" class="card__grades-Max">28ºC</p>
+                        <p id="tmin2" class="card__grades-Min">24ºC</p>
+                    </div>
+                    <div class="card__inside">
+                        <p id="wind2" class="card__grades-Max">28ºC</p>
+                        <p id="humidity2" class="card__grades-Min">24ºC</p>
+                    </div>
                 </div>
             </div>
             <div id="day3" class="card">
@@ -143,8 +156,14 @@
                     <img src="build/img/snow.png" alt="Clima">
                 </div>
                 <div class="card__flex">
-                    <p id="tmax3" class="card__grades-Max">28ºC</p>
-                    <p id="tmin3" class="card__grades-Min">24ºC</p>
+                    <div class="card__inside">
+                        <p id="tmax3" class="card__grades-Max">28ºC</p>
+                        <p id="tmin3" class="card__grades-Min">24ºC</p>
+                    </div>
+                    <div class="card__inside">
+                        <p id="wind3" class="card__grades-Max">28ºC</p>
+                        <p id="humidity3" class="card__grades-Min">24ºC</p>
+                    </div>
                 </div>
             </div>
         </div>

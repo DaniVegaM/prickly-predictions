@@ -31,8 +31,10 @@
         text-align: center;
         #state__info{
             margin-top: 5rem;
+            margin-bottom: 2rem;
             width: 80%;
             font-size: 2.8rem;
+            font-family: v.$fuente-special;
             @include m.tablet{
                 font-size: 3.6rem;
                 width: 100%;
@@ -92,6 +94,12 @@
 .details{
     border-bottom-left-radius: 4rem;
     border-bottom-right-radius: 4rem;
+
+    .details-bg{
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+    }
 
     @include m.tablet{
         border-top-right-radius: 4rem;

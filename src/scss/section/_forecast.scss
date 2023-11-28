@@ -10,7 +10,7 @@
         margin-bottom: 4rem;
         color: v.$terciario;
         text-transform: uppercase;
-        font-size: 2.6rem;
+        font-size: 3.6rem;
         span{ //Hoy
             font-size: 6rem;
         }
@@ -19,7 +19,7 @@
         }
     }
 
-    .todaysForecast__flex{
+    .todaysForecast__flex, .todaysForecast__flex1{
         max-width: 90%;
         display: flex;
         flex-direction: column;
@@ -30,10 +30,17 @@
         @include m.tablet{
             flex-direction: row;
             gap: 2rem;
+            max-width: 80%;
         }
     }
 
-    .card{
+    .todaysForecast__flex1{
+        @include m.tablet{
+            max-width: 50%;
+        }
+    }
+
+    .card, .card1{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -46,16 +53,25 @@
             margin-bottom: 0;
         }
 
-        .card__flex{
+        .card__flex, .card__flex1{
             display: flex;
             justify-content: space-between;
-            padding: 0 5rem;
-            flex-direction: column;
+            @include m.tablet{
+                padding: 0 5rem;
+                gap: 4rem;
+            }
             p{
                 color: v.$blanco;
             }
-            .card__grades-Max{
+            .card__grades-Max, .card__grades-Max1, .card__grades-Min, .card__grades-Min1{
                 margin: 1rem 0;
+                span{
+                    font-weight: bold;
+                    font-size: 2.4rem;
+                    @include m.tablet{
+                        font-size: 2.6rem;
+                    }
+                }
 
                 @include m.desktop{
                     margin: 0;
@@ -65,7 +81,7 @@
                 flex-direction: row;
             }
         }
-        .card__tittle{
+        .card__tittle, .card__tittle1{
             margin-bottom: 2rem;
             font-size: 2.8rem;
             @include m.tablet{
@@ -75,13 +91,42 @@
                 font-size: 3.2rem;
             }
         }
-        .card__descripcion{
-            font-size: 2rem;
-            font-family: v.$fuente-textos;
+        .card__descripcion, .card__descripcion1{
+            font-size: 2.8rem;
+            font-family: v.$fuente-special;
         }
-        .card__image{
+        .card__image, .card__image1{
             margin: 2rem 0;
+            max-width: 60%;
+            margin: 4rem auto 4rem auto;
         }
+    }
+
+    @include m.tablet{
+        .card1{
+            margin: 0 auto;
+            padding: 4rem;
+            margin-bottom: 2.5rem;
+            .card__tittle1{
+                font-size: 6rem;
+            }
+            .card__flex1{
+                padding: 0;
+                gap: 4rem;
+                text-align: center;
+            }
+            .card__image1{
+                max-width: 80%;
+                margin: 4rem auto 4rem auto;
+            }
+        }
+    }
+
+    .card__inside, .card__inside1{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
     }
 
 }

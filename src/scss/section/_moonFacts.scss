@@ -5,6 +5,7 @@
     .moonFacts__tittle{
         text-align: center;
         padding-top: 10rem;
+        font-family: v.$fuente-special;
         font-size: 6rem;
         span{
             font-size: 10rem;
@@ -38,6 +39,7 @@
             }
         }
         .moon__card-text{
+            font-family: v.$fuente-special;
             font-size: 2rem;
             background-color: v.$blanco;
             height: 18rem;
