@@ -1,4 +1,6 @@
 Para el sidebar menu estas serian las opciones:
+Hasta arriba solo el nombre de la web con su slogan y un icono sencillo de cactus
+
 inicio----->
     Aqui mostramos todos los climas con la opcion de filtrar
 Buscar----->

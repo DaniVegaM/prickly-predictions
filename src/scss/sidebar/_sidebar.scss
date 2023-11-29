@@ -1,0 +1,105 @@
+@use "base/variables" as v;
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25rem;
+    background-color: v.$blanco;
+    z-index: 5;
+    padding: 2rem;
+    .header{
+        position: relative;
+    }
+    .sidebar__marca{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        height: 10rem;
+    }
+    .sidebar__imagen{
+        width: 50%;
+        border-radius: 0.6rem;
+    }
+    .sidebar__texto{
+        text-align: center;
+    }
+    .sidebar__texto-marca{
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    .sidebar__texto-slogan{
+        font-size: 1.2rem;
+    }
+
+    .sidebar__menu{
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: absolute;
+        bottom: 4rem;
+    }
+    .sidebar__menu-option{
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        height: 4rem;
+        cursor: pointer;
+        .icon{
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+    }
+
+    .option__text{
+        text-transform: uppercase;
+        font-family: v.$fuente-special;
+    }
+    
+    .toggle{
+        position: absolute;
+        top: 50%;
+        right: -3.5rem;
+        transform: translateY(-50%);
+        height: 3rem;
+        width: 3rem;
+        background-color: #B7E546;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 0.8rem;
+        cursor: pointer;
+    }
+    &.close{
+        width: 7.8rem;
+        .sidebar__menu-option{
+            gap: 0;
+            display: block;
+        }
+        .sidebar__texto{
+            display: none;
+        }
+        .option__text{
+            display: none;
+        }
+        .sidebar__marca{
+            display: block;
+            gap: 0;
+        }
+        .sidebar__imagen{
+            width: 100%;
+            margin-top: 2.5rem;
+        }
+    }
+}
+
+.contenido{
+    margin-left: 7.8rem;
+}
+
+body{
+    overflow-x: hidden;
+}

@@ -14,7 +14,7 @@ $primario: #238C4D;
 $secundario: #0ed2f7;
 $terciario: #ffbf00;
 $negro: #000000;
-$blanco: #f8f9fa;
+$blanco: #edf6f9;
 $grisClaro: #eceeef;
 $luzNoche: 0px 0px 20px 10px rgba(255, 255, 255, 0.8), 0px 0px 40px 20px rgba(255, 255, 255, 0.6), 0px 0px 60px 30px rgba(255, 255, 255, 0.4);
 
@@ -24,5 +24,12 @@ $noche: repeating-radial-gradient( circle at 0 0, transparent 0, #00171f 40px ),
 
 $contrasteDia: linear-gradient(to top, #2193b0, #6dd5ed);
 $contrasteDia2: linear-gradient(to top, #b2fefa, #0ed2f7);
+
 //Unidades
 $separacion: 5rem;
+
+//Transiciones
+$tran-02: all 0.2s ease;
+$tran-03: all 0.3s ease;
+$tran-04: all 0.4s ease;
+$tran-05: all 0.5s ease;
