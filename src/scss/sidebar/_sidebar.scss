@@ -1,31 +1,63 @@
 @use "base/variables" as v;
+@use "base/mixins" as m;
 
 .sidebar{
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 25rem;
     background-color: v.$blanco;
     z-index: 5;
-    padding: 2rem;
     transition: v.$tran-bar;
+    bottom: 1rem;
+    width: 80%;
+    height: 5.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    left: 25%;
+    @include m.tablet{
+        border-radius: 0;
+        padding: 2rem;
+        flex-direction: column;
+        justify-content: flex-start;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 25rem;
+    }
     .header{
         position: relative;
+        display: flex;
+        flex-direction: row;
+        @include m.tablet{
+            flex-direction: column;
+        }
     }
     .sidebar__marca{
         display: flex;
+        flex-direction: row;
         align-items: center;
         gap: 1rem;
         height: 10rem;
+        @include m.tablet{
+            width: 80%;
+            margin-left: 2.4rem;
+        }
     }
     .sidebar__imagen{
         width: 15rem;
         border-radius: 0.6rem;
+        display: none;
+        @include m.tablet{
+            display: block;
+        }
     }
     .sidebar__texto{
         text-align: center;
         transition: v.$tran-text;
+        display: none;
+        @include m.tablet{
+            display: block;
+        }
     }
     .sidebar__texto-marca{
         font-size: 2rem;
@@ -33,25 +65,49 @@
     }
     .sidebar__texto-slogan{
         font-size: 1.2rem;
+        font-family: v.$fuente-cursiva;
     }
 
     .sidebar__menu{
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        height: 100%;
         position: absolute;
-        bottom: 4rem;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+        gap: 1.5rem;
+        bottom: 0;
+        @include m.tablet{
+            padding: 0;
+            height: 80%;
+            bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8%;
+        }
     }
     .sidebar__menu-option{
         display: flex;
         align-items: center;
         gap: 5rem;
-        height: 4rem;
+        height: 6rem;
+        padding: 1rem;
+        border-radius: 2rem;
         cursor: pointer;
+        transition: v.$tran-btn;
+        &:hover{
+            background-color: #B7E546;
+        }
+        @include m.tablet{
+            padding: 3rem;
+        }
         .icon{
-            width: 3.5rem;
-            height: 3.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            @include m.tablet{
+                width: 3rem;
+                height: 3rem;
+            }
         }
     }
 
@@ -59,28 +115,79 @@
         text-transform: uppercase;
         font-family: v.$fuente-special;
         transition: v.$tran-text;
+        display: none;
+        @include m.tablet{
+            display: block;
+        }
     }
     
     .toggle{
         position: absolute;
         top: 50%;
-        right: -3.5rem;
-        transform: translateY(-50%);
+        transform: translateX(25.8rem);
         height: 3rem;
         width: 3rem;
         background-color: #B7E546;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         padding: 0.8rem;
+        transition: v.$tran-bar;
         cursor: pointer;
+        @include m.tablet{
+            display: flex;
+        }
     }
+
+    .sidebar__menu-optionLogo{
+        display: flex;
+        justify-content: center;
+        @include m.tablet{
+            display: none;
+        }
+    }
+    .optionLogo__image{
+        position: absolute;
+        height: 8rem;
+        bottom: 2rem;
+    }
+
     &.close{
-        width: 7.8rem;
+        width: 80%;
+        left: 10%;
+        @include m.tablet{
+            width: 7.8rem;
+            padding-left: 1.5rem;
+            left: 0;
+        }
+        .sidebar__menu{
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+            gap: 1.5rem;
+            bottom: 0;
+            @include m.tablet{
+                display: flex;
+                flex-direction: column;
+                bottom: 4rem;
+                gap: 8%;
+            }
+        }
         .sidebar__menu-option{
             gap: 0;
-            display: block;
+            display: flex;
+            justify-content: center;
+            height: auto;
+            padding: 0.5rem 1rem;
+            &:nth-child(3){
+                grid-column: 4 / 5;
+            }
+            @include m.tablet{
+                padding: 1rem;
+                &:nth-child(3){
+                    grid-column:auto;
+                }
+            }
         }
         .sidebar__texto{
             display: none;
@@ -89,6 +196,7 @@
             display: none;
         }
         .sidebar__marca{
+            margin-left: 0;
             display: block;
             gap: 0;
         }
@@ -96,11 +204,24 @@
             width: 4rem;
             margin-top: 2.5rem;
         }
+        .toggle{
+            right: -3.5rem;
+            transform: none;
+        }
+        .sidebar__menu-optionLogo{
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+            @include m.tablet{
+                display: none;
+            }
+        }
     }
 }
 
 .contenido{
-    margin-left: 7.8rem;
+    @include m.tablet{
+        margin-left: 7.8rem;
+    }
 }
 
 body{

@@ -39,7 +39,6 @@
             max-width: 50%;
         }
     }
-
     .card, .card1{
         display: flex;
         flex-direction: column;
@@ -57,7 +56,7 @@
             display: flex;
             justify-content: space-between;
             @include m.tablet{
-                padding: 0 5rem;
+                padding: 0 1rem;
                 gap: 4rem;
             }
             p{
@@ -75,6 +74,16 @@
 
                 @include m.desktop{
                     margin: 0;
+                }
+            }
+            .card__grades-Max, .card__grades-Min{
+                @include m.tablet{
+                    font-size: 1.6rem;
+                }
+                span{
+                    @include m.tablet{
+                        font-size: 2rem;
+                    }
                 }
             }
             @include m.desktop{
@@ -99,6 +108,12 @@
             margin: 2rem 0;
             max-width: 60%;
             margin: 4rem auto 4rem auto;
+        }
+    }
+
+    .card{
+        @include m.tablet{
+            width: 55%;
         }
     }
 
