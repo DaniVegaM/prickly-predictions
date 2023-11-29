@@ -10,7 +10,7 @@
     align-items: center;
 
     .input {
-        color: v.$secundario;
+        color: v.$primario;
         font-size: 2.5rem;
         background-color: transparent;
         width: 100%;
@@ -31,6 +31,9 @@
         background-color: v.$blanco;
         border-top-right-radius: 2rem;
         border-top-left-radius: 2rem;
+        @include m.tablet{
+            border-radius: 4rem;
+        }
     }
       
     .input-border {
@@ -48,19 +51,30 @@
         padding-inline: 1em;
         padding-block: 0.8em;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-top-right-radius: 2rem;
+        border-top-left-radius: 2rem;
         @include m.tablet{
             font-size: 2.5rem;
+            border-radius: 4rem;
         }
     }
       
     .input-border-alt {
-        height: 3px;
-        background: linear-gradient(90deg, rgba(255,235,98,1) 0%, rgba(237,228,83,1) 29%, rgba(235,170,17,1) 67%, rgba(255,111,0,1) 100%);
+        height: 0.2rem;
+        background: linear-gradient(90deg, v.$primario 0%, v.$secundario 29%, v.$terciario 67%, v.$secundario 100%);
         transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1.00);
+        @include m.tablet{
+            margin-left: 5rem;
+            height: 0.3rem;
+        }
     }
       
     .input-alt:focus + .input-border-alt {
         width: 100%;
+        @include m.tablet{
+            width: 85%;
+            margin-left: 5rem;
+        }
     }
 
     .search__bar{

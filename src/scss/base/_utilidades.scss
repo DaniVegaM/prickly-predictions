@@ -17,5 +17,14 @@
 
 //Desaparecer y aparecer
 .invisible{
-    display: none;
+    display: none !important;
 }
+
+//Divs
+.inclinado{
+    clip-path: polygon(0 0,100% 0,100% 100%,0 calc(100% - 70px));
+    
+    
+    clip-path: polygon(0 0,100% 70px,100% 100%,0 100%);
+    margin-top: -75px;
+}   

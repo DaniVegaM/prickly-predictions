@@ -19,11 +19,10 @@
         margin: 0 auto;
     }
     .menu__marca{
-        margin-bottom: 4rem;
         color: v.$blanco;
+        margin-bottom: 2rem;
         @include m.tablet{
-            margin-bottom: 10rem;
-            margin-top: 4rem;
+            margin-top: 8rem;
         }
     }
     .menu__text{

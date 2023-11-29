@@ -15,17 +15,6 @@
 <body>
     <div class="fondo bg_dia"> <!-- Main Section -->
         <header class="header">
-            <div class="search">
-                <div class="search__bar">
-                    <div class="search__contenedor">
-                        <input id="search__input" class="input input-alt" placeholder="Tláhuac, Ciudad de México" required="" type="text">
-                        <span class="input-border input-border-alt"></span>
-                    </div>
-                    <div id="search__image" class="search__icon">
-                        <img class="lupa-black" src="build/img/lupaBlack.png" alt="">
-                    </div>
-                </div>
-            </div>
             <div class="menu contenedor">
                 <div class="menu__marca">
                     <div class="menu__logo">
@@ -57,17 +46,28 @@
                     </label>
                 </div>
             </div>
+            <div id="searchBar" class="search">
+                <div class="search__bar">
+                    <div class="search__contenedor">
+                        <input id="search__input" class="input input-alt" placeholder="Tláhuac, Ciudad de México" required="" type="text">
+                        <span class="input-border input-border-alt"></span>
+                    </div>
+                    <div id="search__image" class="search__icon">
+                        <img class="lupa-black" src="build/img/lupaBlack.png" alt="">
+                    </div>
+                </div>
+            </div>
         </header>
     
-        <main class="hero">
+        <main class="hero"> 
             <div id="mainWeather" class="weather-grid">
                 <div class="temperature">
                     <div class="temperature-bg">
-                        <div class="temperature__card">
+                        <div title="Temperatura Máxima" class="temperature__card">
                             <img src="build/img/temp_max.png" alt="Temperatura Maxima">
                             <h2 id="maximum-value" class="temperature__maximum loader"></h2>
                         </div>
-                        <div class="temperature__card">
+                        <div title="Temperatura Mínima" class="temperature__card">
                             <img src="build/img/temp_min.png" alt="Temperatura Mínima">
                             <h2 id="minimum-value" class="temperature__minimum loader"></h2>
                         </div>
@@ -86,11 +86,11 @@
                 </div>
                 <div class="details">
                     <div class="details-bg">
-                        <div class="details__card">
+                        <div title="Velocidad del viento" class="details__card">
                             <img src="build/img/wind.png" alt="Velocidad del Viento">
                             <h2 id="details__windSpeed" class="loader"></h2>
                         </div>
-                        <div class="details__card">
+                        <div title="Probabilidad de precipitación" class="details__card">
                             <img src="build/img/humidity.png" alt="Probabilidad de precipitación">
                             <h2 id="details__humidity" class="loader"></h2>
                         </div>
@@ -106,10 +106,11 @@
                 </div>
             </div>
         </main>
+        
         <div id="luciernagas"></div>
     </div> <!-- Fin Main Section -->
 
-    <section id="seccionDias" class="todaysForecast">
+    <section id="seccionDias" class="todaysForecast inclinado">
         <h2 class="todaysForecast__tittle">Pronostico de</h2>
 
         <div class="todaysForecast__flex1">
@@ -169,7 +170,7 @@
         </div>
     </section>
 
-    <section id="moonFacts" class="moonFacts invisible">
+    <section id="moonFacts" class="moonFacts invisible inclinado">
         <h2 class="moonFacts__tittle">Sabias que<br><span>¿?</span></h2>
         <div class="moonFacts__flex">
             <div class="moon__card">

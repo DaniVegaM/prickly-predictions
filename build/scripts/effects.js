@@ -1,4 +1,5 @@
 const switchBtn = document.querySelector("#switch");
+const searchBarEff = document.querySelector("#searchBar");
 const fondo = document.querySelector(".fondo");
 const luciernagas = document.querySelector("#luciernagas");
 const weatherState = document.querySelector("#mainWeather");
@@ -18,6 +19,8 @@ switchBtn.addEventListener("click", event =>{
         fondo.classList.toggle("bg_noche");
         weatherState.classList.toggle("invisible");
         weatherState.classList.toggle("weather-grid");
+
+        searchBarEff.classList.toggle("invisible");
 
         daysSection.classList.toggle("invisible");
 
