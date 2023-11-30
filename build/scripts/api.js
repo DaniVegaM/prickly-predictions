@@ -129,7 +129,7 @@ function consultApi(){ //Get data from API
                 console.log(resultado);
                 generarHTMLData(resultado, []);
                 // generarHTMLDays(resultado, []); //no tiene caso poner otro caso porque puedo poner todo en la misma funcion
-            })
+              })
                     .catch(error => console.error("Error al obtener datos del clima:", error));
     
     fetch(apiMoon)
