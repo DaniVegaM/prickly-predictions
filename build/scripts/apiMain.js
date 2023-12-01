@@ -14,6 +14,9 @@ window.addEventListener("load", ()=>{
 
 const weatherContainer = document.querySelector("#todosClimasGrid");
 const estadoTitle = document.querySelector("#estado__title");
+const loadMoreBtn = document.querySelector("#loadMore");
+
+let arrayStatesGeneral = [];
 
 function generarHTMLMain(resultado) {
     console.log("Generando HTML del Main");
@@ -21,7 +24,9 @@ function generarHTMLMain(resultado) {
     //Create fragment of the document
     const fragment = document.createDocumentFragment();
     const fragment2 = document.createDocumentFragment();
+
     let arrayStates = [];
+
     arrayStates[0] = resultado.filter(element=>{
         return element.nes === "Aguascalientes";
     });
@@ -119,39 +124,15 @@ function generarHTMLMain(resultado) {
         return element.nes === "Zacatecas";
     });
 
-    for(let i = 0; i < 32; i++){
-        var stateTitle = document.createElement('div');
-            stateTitle.className = 'state__tittle';
-            stateTitle.innerHTML = `<h3>${arrayStates[i][0].nes}</h3>`;
-        fragment2.appendChild(stateTitle);
-        weatherContainer.appendChild(fragment2);
-        arrayStates[i].forEach(element => {
-            var card = document.createElement('div');
-            card.className = 'todosClimas__card';
-            card.innerHTML = `
-            <div class="todosClimas__card">
-                <h2 class="card__tittle">${element.nmun}</h2>
-                <h3 id="climaDesciel" class="card__descripcion">${element.desciel}</h3>
-                <div id="climaImg" class="card__image">
-                    ${imgWheater(element.desciel)}
-                </div>
-                <div class="card__flex">
-                    <div class="card__inside">
-                        <p id="clima__tmax" class="card__grades-Max">Max:<br><span>${Math.floor(element.tmax)}º</span></p>
-                        <p id="clima__tmin" class="card__grades-Min">Min:<br><span>${Math.floor(element.tmin)}º</span></p>
-                    </div>
-                    <div class="card__inside">
-                        <p id="clima__wind" class="card__grades-Max">Vel. Viento: <br><span>${element.velvien} km/h</span></p>
-                        <p id="clima__humidity" class="card__grades-Min">Prob. de Precipitación: <br><span>${Math.floor(element.probprec)}%</span></p>
-                    </div>
-                </div>
-            </div>
-            `;
-    
-            fragment.appendChild(card);
-        });
-        weatherContainer.appendChild(fragment);
-    } 
+    arrayStatesGeneral = arrayStates;
+
+    //Load the first time
+    generarHTMLDinamico("A", fragment, fragment2);
+
+    loadMoreBtn.addEventListener("click", ()=>{
+        console.log("El numero de clicks es: " + clickCount);
+        generarHTMLDinamico("B", fragment, fragment2);
+    });
 }
 
 function imgWheater(desciel){
@@ -193,4 +174,78 @@ function imgWheater(desciel){
         return `<img src="build/img/tornado.png" alt="Clima" loading="lazy">`;
       break;
     }
-  }
+}
+
+let start = 0;
+let end = 0;
+let numState = 0;
+const elementsByPage = 12;
+let numElements = 1;
+let clickCount = 0;
+
+function generarHTMLDinamico(which, fragment, fragment2){
+
+    if(which == "A"){
+        start = 0;
+        end = elementsByPage;
+    } else{
+        start = (clickCount * elementsByPage) + 1;
+        end = start + elementsByPage;
+    }
+
+    // console.log("El arrayStates es: " + arrayStatesGeneral[1]);
+
+    //Execute a state
+    // console.log("Cargando HTML");
+    console.log("El num de Estado es: " + numState);
+    if(clickCount == 0){
+        var stateTitle = document.createElement('div');
+        stateTitle.className = 'state__title';
+        stateTitle.innerHTML = `<h3>${arrayStatesGeneral[numState][0].nes}</h3>`;
+        
+        fragment2.appendChild(stateTitle);
+        weatherContainer.appendChild(fragment2);
+    }
+
+    console.log("start vale: " + start + " y end vale: " + end + " y clickCount vale: " + clickCount);
+
+    arrayStatesGeneral[numState].slice(start, end).forEach(element => {
+        numElements++;
+
+        console.log("Acabo de entrar a generar card de municipio");
+
+        var card = document.createElement('div');
+        card.className = 'todosClimas__card';
+        card.innerHTML = `
+        <div class="todosClimas__card">
+            <h2 class="card__tittle">${element.nmun}</h2>
+            <h3 id="climaDesciel" class="card__descripcion">${element.desciel}</h3>
+            <div id="climaImg" class="card__image">
+                ${imgWheater(element.desciel)}
+            </div>
+            <div class="card__flex">
+                <div class="card__inside">
+                    <p id="clima__tmax" class="card__grades-Max">Max:<br><span>${Math.floor(element.tmax)}º</span></p>
+                    <p id="clima__tmin" class="card__grades-Min">Min:<br><span>${Math.floor(element.tmin)}º</span></p>
+                </div>
+                <div class="card__inside">
+                    <p id="clima__wind" class="card__grades-Max">Vel. Viento: <br><span>${element.velvien} km/h</span></p>
+                    <p id="clima__humidity" class="card__grades-Min">Prob. de Precipitación: <br><span>${Math.floor(element.probprec)}%</span></p>
+                </div>
+            </div>
+        </div>
+        `;
+
+        fragment.appendChild(card);
+    });
+    weatherContainer.appendChild(fragment);
+
+    if(end >= (arrayStatesGeneral[numState].length)){
+        numState++;
+        numElements = 1;
+        clickCount = 0;
+        console.log("Ya se completaron todos los municipios del estado");
+    } else{
+        clickCount++;
+    }
+}
