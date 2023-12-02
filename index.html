@@ -45,12 +45,12 @@
                     <p class="option__text">Buscar</p>
                 </div>
             </div>
-            <div id="option__aprende" class="sidebar__menu-option">
-                <div class="icon" title="Aprende">
-                    <img src="build/img/aprender.png" alt="Inicio">
+            <div id="option__listado" class="sidebar__menu-option">
+                <div class="icon" title="Listado">
+                    <img src="build/img/aprender.png" alt="Listado">
                 </div>
                 <div>
-                    <p class="option__text">Aprende</p>
+                    <p class="option__text">Listado</p>
                 </div>
             </div>
             <div id="option__acerca" class="sidebar__menu-option">
@@ -70,6 +70,8 @@
         </div>
     </nav>
 
+    <div id="blur" class=""></div>
+    
     <div class="contenido">
         <header class="mainHeader">
             <div class="menu contenedor">
@@ -82,19 +84,56 @@
                 </div>
             </div>
         </header>
-        <div class="todosClimas">
-            <h2>Consulta el clima de cualquier estado en México</h2>
-            
-            <div id="todosClimasGrid">
-                
-            </div>
 
-            <a id="loadMore" class="loadMore">Cargar más</a>
+        <div class="acercaDe">
+            <h1 class="acercaDe__title">Atentos al Tiempo: <br><span>Claridad en Cada Pronóstico</span></h1>
+            <p class="acercaDe__description">En Prickly PREDICTIONS™ nos dedicamos a proporcionar la información meteorológica más precisa y actualizada para que puedas planificar tu día con confianza. Nuestra empresa cuenta con un equipo de expertos meteorólogos que monitorean constantemente las condiciones atmosféricas para ofrecerte pronósticos confiables. <br><br>
+                                            Ofrecemos una amplia gama de servicios, desde pronósticos diarios hasta informes detallados para eventos especiales. Utilizamos las últimas tecnologías en meteorología y recopilamos datos de fuentes confiables para garantizar la precisión de nuestras predicciones. <br><br>
+                                            En Prickly PREDICTIONS, creemos que la información meteorológica debe ser accesible para todos. Por eso, ofrecemos interfaces intuitivas y aplicaciones móviles para que puedas acceder a la información del clima en cualquier momento y lugar.
+            </p>
+            <div class="acercaDe__image">
+                <img src="build/img/cloudAcerca.png" alt="Cloud image">
+            </div>
+            <h2 class="acercaDe__grid-title">¿Cómo se obtienen los datos del pronóstico del clima?</h2>
+            <div class="acercaDe__grid">
+                <div class="acercaDe__card">
+                    <h3 class="acercaDe__card-title">Recopilación de Datos</h3>
+                    <p class="acercaDe__card-text">El proceso comienza con la recopilación de datos meteorológicos de diversas fuentes, como estaciones meteorológicas en tierra, boyas en el océano, satélites y globos meteorológicos. Estos dispositivos recopilan información sobre variables clave como la temperatura, la presión atmosférica, la humedad, la velocidad y dirección del viento, entre otros.</p>
+                    <div class="acercaDe__card-img">
+                        <img src="build/img/data1.jpg" alt="Imagen 1">
+                    </div>
+                </div>
+                <div class="acercaDe__card">
+                    <h3 class="acercaDe__card-title">Modelos Meteorológicos</h3>
+                    <p class="acercaDe__card-text">Una vez recopilados los datos, se utilizan modelos meteorológicos computacionales para simular y prever el comportamiento atmosférico. Estos modelos utilizan ecuaciones matemáticas complejas para representar las interacciones entre diferentes componentes atmosféricos.</p>
+                    <div class="acercaDe__card-img">
+                        <img src="build/img/data2.jpg" alt="Imagen 1">
+                    </div>
+                </div>
+                <div class="acercaDe__card">
+                    <h3 class="acercaDe__card-title">Análisis y Presentación</h3>
+                    <p class="acercaDe__card-text acercaDe__card-text-last">Los meteorólogos analizan los resultados de los modelos y los comparan con otras fuentes de datos para mejorar la precisión de las predicciones. Luego, utilizan esta información para generar informes climáticos que incluyen pronósticos para diferentes períodos, alertas meteorológicas y condiciones especiales. </p>
+                    <div class="acercaDe__card-img lastCardImage">
+                        <img src="build/img/data3.jpg" alt="Imagen 1">
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <section class="estaciones">
+            <h2 class="estaciones__titulo">Las cuatro estaciones del año</h2>
+            <p class="estaciones__text">Hagamos elecciones conscientes, adoptemos prácticas sostenibles y valoremos la diversidad de la vida en cada rincón de nuestro hogar. El futuro de las estaciones está en nuestras manos; protejamos y amemos la maravilla que llamamos hogar.</p>
+            <div class="estacionesFlex">
+                <img loading="lazy" class="estacion" src="build/img/estac-1.jpg" alt="Primavera">
+                <img loading="lazy" class="estacion" src="build/img/estac-2.jpg" alt="Verano">
+                <img loading="lazy" class="estacion" src="build/img/estac-3.jpg" alt="Otoño">
+                <img loading="lazy" class="estacion" src="build/img/estac-4.jpg" alt="Invierno">
+            </div>
+        </section>
     </div>
 
     <script src="build/scripts/logic.js"></script>
     <script src="build/scripts/sidebar.js"></script>
-    <script src="build/scripts/apiMain.js"></script>
+    <script src="build/scripts/effects.js"></script>
 </body>
 </html>

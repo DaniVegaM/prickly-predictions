@@ -1,6 +1,6 @@
 const inicio = document.querySelector("#option__inicio");
 const buscar = document.querySelector("#option__buscar");
-const aprende = document.querySelector("#option__aprende");
+const listado = document.querySelector("#option__listado");
 const acerca = document.querySelector("#option__acerca");
 
 inicio.addEventListener("click", ()=>{
@@ -9,8 +9,8 @@ inicio.addEventListener("click", ()=>{
 buscar.addEventListener("click", ()=>{
     window.location.href = 'buscar.html';
 });
-aprende.addEventListener("click", ()=>{
-    window.location.href = 'aprende.html';
+listado.addEventListener("click", ()=>{
+    window.location.href = 'listado.html';
 });
 acerca.addEventListener("click", ()=>{
     window.location.href = 'acerca.html';

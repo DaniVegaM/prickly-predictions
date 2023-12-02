@@ -73,12 +73,62 @@
     <div id="blur" class=""></div>
 
     <div class="contenido">
+        <header class="mainHeader listadoBackground">
+            <div class="menu contenedor centrar">
+                <div class="menu__marca">
+                    <p class="menu__slogan">"En la vida, como en el clima, las tormentas son inevitables. Lo importante es aprender a ser un faro en la tormenta y encontrar calma en medio del caos."</p>
+                </div>
+            </div>
+        </header>
+        <div class="todosClimas">
+            <h2 class="todosClimas__title">Consulta el clima de cualquier estado en México</h2>
 
+            <select name="selectState" id="selectState" class="selectState">
+                <option value="999" selected disabled>--Selecciona un Estado--</option>
+                <option value="0">Aguascalientes</option>
+                <option value="1">Baja California</option>
+                <option value="2">Baja California Sur</option>
+                <option value="3">Campeche</option>
+                <option value="4">Chiapas</option>
+                <option value="5">Chihuahua</option>
+                <option value="6">Coahuila</option>
+                <option value="7"">Colima</option>
+                <option value="8">Ciudad de México</option>
+                <option value="9">Durango</option>
+                <option value="10">Estado de México</option>
+                <option value="11">Guanajuato</option>
+                <option value="12">Guerrero</option>
+                <option value="13">Hidalgo</option>
+                <option value="14">Jalisco</option>
+                <option value="15">Michoacán de Ocampo</option>
+                <option value="16">Morelos</option>
+                <option value="17">Nayarit</option>
+                <option value="18">Nuevo León</option>
+                <option value="19">Oaxaca</option>
+                <option value="20">Puebla</option>
+                <option value="21">Querétaro de Arteaga</option>
+                <option value="22">Quintana Roo</option>
+                <option value="23">San Luis Potosí</option>
+                <option value="24">Sinaloa</option>
+                <option value="25">Sonora</option>
+                <option value="26">Tabasco</option>
+                <option value="27">Tamaulipas</option>
+                <option value="28">Tlaxcala</option>
+                <option value="29">Veracruz de Ignacio de la Llave</option>
+                <option value="30">Yucatán</option>
+                <option value="31">Zacatecas</option>
+            </select>
+            
+            <div id="todosClimasGrid">
+                
+            </div>
+
+            <a id="loadMore" class="loadMore">Cargar más</a>
+        </div>
     </div>
 
     <script src="build/scripts/logic.js"></script>
     <script src="build/scripts/sidebar.js"></script>
-    <script src="build/scripts/api.js"></script>
-    <script src="build/scripts/effects.js"></script>
+    <script src="build/scripts/apiMain.js"></script>
 </body>
 </html>

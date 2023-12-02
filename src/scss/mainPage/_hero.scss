@@ -8,18 +8,23 @@
     background-position: center;
     padding: 0 5rem;
     @include m.tablet{
-        padding: 0;
+        padding: 0 10rem;
     }
+}
+
+.listadoBackground{
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0.2) 100%), url(../img/listado.jpg);
 }
 
 .todosClimas{
     text-align: center;
     background-color: v.$blanco;
     padding-bottom: 20rem;
-    h2{
+    .todosClimas__title{
         font-family: v.$fuente-titulos;
         padding: 5rem 0;
         text-transform: uppercase;
+        padding: 2rem 4rem;
     }
     #todosClimasGrid{
         padding: 0 5rem 5rem 5rem;
@@ -29,6 +34,7 @@
         }
         @include m.desktop{
             @include m.grid(3, 1fr, 2rem);
+            padding: 0 10rem 5rem 10rem 5rem;
         }
 
         .state__title{
@@ -44,7 +50,7 @@
         .todosClimas__card{
             background-color: v.$primario;
             border-radius: 5rem;
-            padding-bottom: 2rem;
+            padding: 2rem 1rem;
             h2{
                 font-family: v.$fuente-special;
             }
@@ -107,11 +113,11 @@
                     font-size: 2.6rem;
                 }
                 @include m.desktop{
-                    font-size: 3.2rem;
+                    font-size: 2.8rem;
                 }
             }
             .card__descripcion{
-                font-size: 2.8rem;
+                font-size: 2.2rem;
                 font-family: v.$fuente-special;
                 color: v.$blanco;
             }
@@ -135,5 +141,14 @@
         &:hover{
             background-color: #8bb914;
         }
+    }
+    .selectState{
+        margin: 4rem 0;
+        border: 2px solid v.$primario;
+        border-radius: 2rem;
+        height: 5rem;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: v.$blanco;
     }
 }
