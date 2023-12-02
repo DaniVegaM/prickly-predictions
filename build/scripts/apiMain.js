@@ -234,7 +234,7 @@ function generarHTMLDinamico(which, fragment, fragment2, numStateLocal){
     if(clickCount == 0){
         var stateTitle = document.createElement('div');
         stateTitle.className = 'state__title';
-        stateTitle.innerHTML = `<h3>${arrayStatesGeneral[whichState][0].nes}</h3>`;
+        stateTitle.innerHTML = `<h3 class="color">${arrayStatesGeneral[whichState][0].nes}</h3>`;
         
         fragment2.appendChild(stateTitle);
         weatherContainer.appendChild(fragment2);

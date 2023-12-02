@@ -1,0 +1,24 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.mainFooter{
+    background-color: v.$primario;
+    padding: 4rem;
+    text-align: center;
+    color: v.$blanco;
+    padding-bottom: 15rem;
+    @include m.tablet{
+        padding-bottom: 4rem;
+    }
+    .mainFooter__marca-title{
+        margin-bottom: 2rem;
+    }
+
+    .mainFooter__marca-img{
+        width: 10%;
+        margin: 0 auto;
+    }
+    .mainFooter__copyright-text{
+        color: v.$blanco;
+    }
+}

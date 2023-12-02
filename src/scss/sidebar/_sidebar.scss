@@ -96,7 +96,7 @@
         cursor: pointer;
         transition: v.$tran-btn;
         &:hover{
-            background-color: #B7E546;
+            background-color: v.$primario;
         }
         @include m.tablet{
             padding: 3rem;
@@ -127,7 +127,7 @@
         transform: translateX(25.8rem);
         height: 3rem;
         width: 3rem;
-        background-color: #B7E546;
+        background-color: v.$primario;
         display: none;
         align-items: center;
         justify-content: center;
@@ -135,6 +135,9 @@
         padding: 0.8rem;
         transition: v.$tran-bar;
         cursor: pointer;
+        &:hover{
+            background-color: v.$primario-hover;
+        }
         @include m.tablet{
             display: flex;
         }

@@ -10,20 +10,22 @@ $tablet: 768px;
 $desktop: 1080px;
 
 //Colores
-$primario: #238C4D;
-$secundario: #0ed2f7;
+$primario: #b7e546;
+$primario-hover: #a2d819;
+$secundario: #55B643;
 $terciario: #ffbf00;
 $negro: #000000;
 $blanco: #edf6f9;
-$grisClaro: #eceeef;
 $luzNoche: 0px 0px 20px 10px rgba(255, 255, 255, 0.8), 0px 0px 40px 20px rgba(255, 255, 255, 0.6), 0px 0px 60px 30px rgba(255, 255, 255, 0.4);
 
 //Fondos
 $dia: repeating-radial-gradient( circle at 0 0, transparent 0, #c8b6a3 40px ), repeating-linear-gradient( #c0aa6f34, #b8a56f9c );
 $noche: repeating-radial-gradient( circle at 0 0, transparent 0, #00171f 40px ), repeating-linear-gradient( #041b26, #07202e );
 
-$contrasteDia: linear-gradient(to top, #2193b0, #6dd5ed);
-$contrasteDia2: linear-gradient(to top, #b2fefa, #0ed2f7);
+$contrasteDia: linear-gradient(-45deg, rgba(0,44,172,1) 0%, rgba(43,43,214,1) 27%, rgba(0,212,255,1) 100%);
+$contrasteDia1: linear-gradient(45deg, rgba(0,44,172,1) 0%, rgba(43,43,214,1) 27%, rgba(0,212,255,1) 100%);
+$contrasteDia2: linear-gradient(180deg, rgba(0,44,172,1) 0%, rgba(43,43,214,1) 27%, rgba(0,212,255,1) 100%);
+$contrasteDia3: linear-gradient(to top, #b2fefa, #0ed2f7);
 
 //Unidades
 $separacion: 5rem;

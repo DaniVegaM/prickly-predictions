@@ -9,11 +9,15 @@
     padding: 0 5rem;
     @include m.tablet{
         padding: 0 10rem;
+        min-height: 80rem;
     }
 }
 
 .listadoBackground{
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0.2) 100%), url(../img/listado.jpg);
+    @include m.tablet{
+        min-height: 40rem;
+    }
 }
 
 .todosClimas{
@@ -21,10 +25,20 @@
     background-color: v.$blanco;
     padding-bottom: 20rem;
     .todosClimas__title{
+        color: v.$secundario;
         font-family: v.$fuente-titulos;
         padding: 5rem 0;
         text-transform: uppercase;
         padding: 2rem 4rem;
+        &::after{
+            background-image: linear-gradient(to right, v.$primario 50%, v.$terciario 50%, v.$terciario 100%);
+            content: "";
+            display: block;
+            height: 0.8rem;
+            margin: 0.5rem 0 3rem 0;
+            width: 15rem;
+            margin: 2rem auto;
+        }
     }
     #todosClimasGrid{
         padding: 0 5rem 5rem 5rem;
@@ -48,7 +62,7 @@
         }
 
         .todosClimas__card{
-            background-color: v.$primario;
+            background: v.$contrasteDia3;
             border-radius: 5rem;
             padding: 2rem 1rem;
             h2{
@@ -78,6 +92,7 @@
                     color: v.$blanco;
                 }
                 .card__grades-Max, .card__grades-Min{
+                    color: v.$negro;
                     margin: 1rem 0;
                     span{
                         font-weight: bold;
@@ -108,7 +123,7 @@
             .card__tittle{
                 margin-bottom: 2rem;
                 font-size: 2.8rem;
-                color: v.$blanco;
+                color: v.$negro;
                 @include m.tablet{
                     font-size: 2.6rem;
                 }
@@ -119,7 +134,7 @@
             .card__descripcion{
                 font-size: 2.2rem;
                 font-family: v.$fuente-special;
-                color: v.$blanco;
+                color: v.$negro;
             }
             .card__image{
                 margin: 2rem 0;
@@ -131,7 +146,7 @@
     .loadMore{
         padding: 2rem;
         border-radius: 5rem;
-        background-color: #B7E546;
+        background-color: v.$primario;
         color: v.$blanco;
         font-family: v.$fuente-special;
         text-transform: uppercase;
@@ -139,12 +154,12 @@
         cursor: pointer;
         transition: all ease .3s;
         &:hover{
-            background-color: #8bb914;
+            background-color: v.$primario-hover;
         }
     }
     .selectState{
         margin: 4rem 0;
-        border: 2px solid v.$primario;
+        border: 2px solid v.$secundario;
         border-radius: 2rem;
         height: 5rem;
         text-align: center;

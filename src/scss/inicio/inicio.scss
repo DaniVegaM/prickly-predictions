@@ -8,8 +8,9 @@
     text-align: center;
     padding: 4rem 4rem 15rem 4rem;
     .acercaDe__title{
-        margin: 0 0 4rem 0;
+        margin: v.$separacion 0 4rem 0;
         span{
+            color: v.$primario;
             font-family: v.$fuente-cursiva;
             font-size: 4.6rem;
         }
@@ -35,7 +36,9 @@
     }
 
     .acercaDe__grid-title{
-        margin: 4rem 0;
+        margin: 4rem 0 v.$separacion 0;
+        color: v.$primario;
+        text-transform: uppercase;
     }
     .acercaDe__grid{
         display: flex;
@@ -111,6 +114,7 @@
     }
 }
 .estaciones__titulo{
+    text-transform: uppercase;
     color: var(--negro);
     font-size: 2.4rem;
     line-height: 1.2;
@@ -128,12 +132,15 @@
     }
 }
 .estaciones__titulo::after{
-    background-image: linear-gradient(to right, var(--detalles) 50%, var(--principal) 50%, var(--principal) 100%);
+    background-image: linear-gradient(to right, v.$primario 50%, v.$terciario 50%, v.$terciario 100%);
     content: "";
     display: block;
-    height: 0.5rem;
-    margin: 0.5rem 0 3rem 0;
+    height: 0.8rem;
+    margin: 2rem auto;
     width: 15rem;
+    @include m.tablet{
+        margin: 0.5rem 0 3rem 0;
+    }
 }
 .estacion{
     margin-bottom: 2rem;
