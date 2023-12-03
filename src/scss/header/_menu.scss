@@ -40,7 +40,7 @@
             background-image: linear-gradient(to right top, #32974b, #49ad47, #65c23f, #85d730, #a8eb12);
         }
         &::after{
-            content: ' ';
+            content: none;
             display: inline;
             width: 2rem;
             height: 4rem;
@@ -48,6 +48,7 @@
             background-repeat: no-repeat;
             background-position: center;
             @include m.tablet{
+                content: ' ';
                 width: 6rem;
                 height: 8rem;
             }
