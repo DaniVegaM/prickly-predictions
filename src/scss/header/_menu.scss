@@ -39,18 +39,6 @@
             background-clip: text;
             background-image: linear-gradient(to right top, #32974b, #49ad47, #65c23f, #85d730, #a8eb12);
         }
-        &::after{
-            content: none;
-            @include m.tablet{
-                content: ' ';
-                display: inline;
-                background-image: url("/build/img/flower.svg");
-                background-repeat: no-repeat;
-                background-position: center;
-                width: 6rem;
-                height: 8rem;
-            }
-        }
         .brilla{
             color: v.$blanco;
             font-family: v.$fuente-titulos;
