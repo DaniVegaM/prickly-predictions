@@ -4,7 +4,6 @@ const fondo = document.querySelector(".fondo");
 const luciernagas = document.querySelector("#luciernagas");
 const weatherState = document.querySelector("#mainWeather");
 const moon = document.querySelector("#mainMoon");
-const textMark = document.querySelector(".texto-marca");
 const daysSection = document.querySelector("#seccionDias");
 const moonSection = document.querySelector("#moonFacts");
 
@@ -25,9 +24,6 @@ switchBtn.addEventListener("click", event =>{
         daysSection.classList.toggle("invisible");
 
         moonSection.classList.toggle("invisible");
-
-        textMark.classList.toggle("texto-marca");
-        textMark.classList.toggle("brilla");
 
         moon.classList.toggle("invisible");
         moon.classList.toggle("moon-grid");
@@ -56,15 +52,5 @@ switchBtn.addEventListener("click", event =>{
             luciernagas.innerHTML = ``;
         }
     }
-});
-
-//SideBar
-
-const sidebar = document.querySelector(".sidebar");
-const toggle = document.querySelector(".toggle");
-
-toggle.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-    console.log("Clic en sidebar");
 });
 

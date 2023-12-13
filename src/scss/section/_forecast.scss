@@ -8,7 +8,7 @@
     .todaysForecast__tittle{
         text-align: center;
         margin-bottom: 4rem;
-        color: v.$terciario;
+        color: v.$secundario;
         text-transform: uppercase;
         font-size: 3.6rem;
         span{ //Hoy
@@ -39,15 +39,14 @@
             max-width: 50%;
         }
     }
-
     .card, .card1{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color: v.$secundario;
+        background: v.$contrasteDia3;
         padding: 2rem;
         border-radius: 5rem;
-        color: v.$blanco;
+        color: v.$negro;
         margin-bottom: 4rem;
         @include m.tablet{
             margin-bottom: 0;
@@ -57,13 +56,14 @@
             display: flex;
             justify-content: space-between;
             @include m.tablet{
-                padding: 0 5rem;
+                padding: 0 1rem;
                 gap: 4rem;
             }
             p{
                 color: v.$blanco;
             }
             .card__grades-Max, .card__grades-Max1, .card__grades-Min, .card__grades-Min1{
+                color: v.$negro;
                 margin: 1rem 0;
                 span{
                     font-weight: bold;
@@ -75,6 +75,16 @@
 
                 @include m.desktop{
                     margin: 0;
+                }
+            }
+            .card__grades-Max, .card__grades-Min{
+                @include m.tablet{
+                    font-size: 1.6rem;
+                }
+                span{
+                    @include m.tablet{
+                        font-size: 2rem;
+                    }
                 }
             }
             @include m.desktop{
@@ -99,6 +109,12 @@
             margin: 2rem 0;
             max-width: 60%;
             margin: 4rem auto 4rem auto;
+        }
+    }
+
+    .card{
+        @include m.tablet{
+            width: 55%;
         }
     }
 

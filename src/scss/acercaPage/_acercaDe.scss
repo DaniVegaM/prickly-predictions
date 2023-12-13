@@ -1,0 +1,93 @@
+@use "global/variables" as v;
+@use "global/mixins" as m;
+
+.acercaDe{
+    background: rgb(0,44,172);
+    background: linear-gradient(-45deg, rgba(0,44,172,1) 0%, rgba(43,43,214,1) 27%, rgba(0,212,255,1) 100%);
+    color: v.$blanco;
+    text-align: center;
+    padding: 4rem 4rem 15rem 4rem;
+    .acercaDe__title{
+        margin: 0 0 4rem 0;
+        span{
+            font-family: v.$fuente-cursiva;
+        }
+    }
+    .acercaDe__description{
+        color: v.$blanco;
+        margin-bottom: 4rem;
+        @include m.tablet{
+            margin-bottom: 10rem;
+        }
+    }
+    .acercaDe__image{
+        @include m.tablet{
+            width: 65%;
+            margin: 0 auto;
+        }
+        @include m.desktop{
+            width: 80%;
+        }
+    }
+
+    .acercaDe__grid-title{
+        margin: 4rem 0;
+    }
+    .acercaDe__grid{
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+
+        @include m.tablet{
+            @include m.grid(2, 1fr, 4rem);
+        }
+        @include m.desktop{
+            @include m.grid(3, 1fr, 4rem);
+        }
+        .acercaDe__card{
+            .acercaDe__card-title{
+                margin-bottom: 2rem;
+                font-family: v.$fuente-special;
+            }
+            .acercaDe__card-text{
+                color: v.$blanco;
+                margin-bottom: 2rem;
+                @include m.tablet{
+                    font-size: 2rem;
+                }
+                @include m.desktop{
+                    font-size: 1.8rem;
+                }
+            }
+            @include m.tablet{
+                &:nth-child(3){
+                    grid-column: 1 / 3;
+                }
+                height: 65rem;
+                position: relative;
+            }
+            @include m.desktop{
+                &:nth-child(3){
+                    grid-column: 3 / 4;
+                }
+                height: 60rem;
+            }
+            .acercaDe__card-img{
+                width: 90%;
+                margin: 0 5%;
+                overflow:  hidden;
+                border-radius: 2rem;
+                @include m.tablet{
+                    position: absolute;
+                    bottom: 5%;
+                }
+            }
+            .lastCardImage{
+                bottom: -6rem;
+                @include m.desktop{
+                    bottom: 5%;
+                }
+            }
+        }
+    }
+}

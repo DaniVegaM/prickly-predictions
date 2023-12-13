@@ -40,8 +40,8 @@
             background-image: linear-gradient(to right top, #32974b, #49ad47, #65c23f, #85d730, #a8eb12);
         }
         &::after{
-            content: '';
-            display: inline-block;
+            content: ' ';
+            display: inline;
             width: 2rem;
             height: 4rem;
             background-image: url("/build/img/flower.svg");
@@ -65,5 +65,22 @@
         font-family: v.$fuente-cursiva;
         font-size: 2.8rem;
         font-style: italic;
+    }
+}
+.centrar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .menu__marca{
+        margin: 0;
+        .menu__slogan{
+            font-size: 2.6rem;
+            color: v.$negro;
+            font-weight: bold;
+            @include m.tablet{
+                font-size: 3rem;
+            }
+        }
     }
 }

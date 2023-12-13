@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web</title>
+    <link rel="stylesheet" href="build/css/app.css">
+    <meta name="description" content="El mejor sitio Web para consultar el clima">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat&family=Patrick+Hand+SC&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <nav class="sidebar close">
+        <div class="header">
+            <div class="sidebar__marca">
+                <div class="sidebar__imagen">
+                    <img src="build/img/iconSidebar.png" alt="Logo">
+                </div>
+                <div class="sidebar__texto">
+                    <p class="sidebar__texto-marca">Prickly Predictions</p>
+                    <p class="sidebar__texto-slogan">"Florece donde estas plantado, como un cactus en el desierto"</p>
+                </div>
+            </div>
+            <div class="sidebar__arrow toggle">
+                <img src="build/img/arrow.png" alt="flecha">
+            </div>
+        </div>
+        <div class="sidebar__menu">
+            <div id="option__inicio" class="sidebar__menu-option">
+                <div class="icon" title="Inicio">
+                    <img src="build/img/inicio.png" alt="Inicio">
+                </div>
+                <div>
+                    <p class="option__text">Inicio</p>
+                </div>
+            </div>
+            <div id="option__buscar" class="sidebar__menu-option">
+                <div class="icon" title="Buscar">
+                    <img src="build/img/buscar.png" alt="Inicio">
+                </div>
+                <div>
+                    <p class="option__text">Buscar</p>
+                </div>
+            </div>
+            <div id="option__listado" class="sidebar__menu-option">
+                <div class="icon" title="Listado">
+                    <img src="build/img/aprender.png" alt="Listado">
+                </div>
+                <div>
+                    <p class="option__text">Listado</p>
+                </div>
+            </div>
+            <div id="option__acerca" class="sidebar__menu-option">
+                <div class="icon" title="Acerca de Nosotros">
+                    <img src="build/img/acercaDe.png" alt="Inicio">
+                </div>
+                <div>
+                    <p class="option__text">Acerca de <br>Nosotros</p>
+                </div>
+            </div>
+
+            <div class="sidebar__menu-optionLogo">
+                <div class="optionLogo__image">
+                    <img src="build/img/iconSidebar.png" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="blur" class=""></div>
+
+    <div class="contenido">
+        <div class="fondo bg_dia"> <!-- Main Section -->
+            <main class="hero">
+                <div class="switch__principal">
+                    <label id="switch" class="theme-switch">
+                        <input type="checkbox" class="theme-switch__checkbox">
+                        <div class="theme-switch__container">
+                          <div class="theme-switch__clouds"></div>
+                          <div class="theme-switch__stars-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+                            </svg>
+                          </div>
+                          <div class="theme-switch__circle-container">
+                            <div class="theme-switch__sun-moon-container">
+                              <div class="theme-switch__moon">
+                                <div class="theme-switch__spot"></div>
+                                <div class="theme-switch__spot"></div>
+                                <div class="theme-switch__spot"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </label>
+                </div>
+                <div id="searchBar" class="search">
+                    <div class="search__bar">
+                        <div class="search__contenedor">
+                            <input id="search__input" class="input input-alt" placeholder="Tláhuac, Ciudad de México" required="" type="text">
+                            <span class="input-border input-border-alt"></span>
+                        </div>
+                        <div id="search__image" class="search__icon">
+                            <img class="lupa-black" src="build/img/lupaBlack.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div id="mainWeather" class="weather-grid">
+                    <div class="temperature">
+                        <div class="temperature-bg">
+                            <div title="Temperatura Máxima" class="temperature__card">
+                                <img src="build/img/temp_max.png" alt="Temperatura Maxima">
+                                <h2 id="maximum-value" class="temperature__maximum loader"></h2>
+                            </div>
+                            <div title="Temperatura Mínima" class="temperature__card">
+                                <img src="build/img/temp_min.png" alt="Temperatura Mínima">
+                                <h2 id="minimum-value" class="temperature__minimum loader"></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="state">
+                        <div class="state-bg">
+                            <div class="state__image">
+                                <img src="build/img/state-Sun.png" alt="Clima">
+                            </div>
+                            <h2 id="state__info">cargando...</h2>
+                            <p id="state__cd">cargando...</p>
+                            <p><br></p>
+                            <p id="state__day">cargando...</p>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="details-bg">
+                            <div title="Velocidad del viento" class="details__card">
+                                <img src="build/img/wind.png" alt="Velocidad del Viento">
+                                <h2 id="details__windSpeed" class="loader"></h2>
+                            </div>
+                            <div title="Probabilidad de precipitación" class="details__card">
+                                <img src="build/img/humidity.png" alt="Probabilidad de precipitación">
+                                <h2 id="details__humidity" class="loader"></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainMoon" class="invisible">
+                    <div class="moon">
+                        <div id="moonIcon" class="moon__icon">
+                            <img src="build/img/moon.png" alt="moon">
+                        </div>
+                        <h2 id="moonInfo" class="moon__info loader"></h2>
+                    </div>
+                </div>
+            </main>
+            
+            <div id="luciernagas"></div>
+        </div> <!-- Fin Main Section -->
+    
+        <section id="seccionDias" class="todaysForecast inclinado">
+            <h2 class="todaysForecast__tittle">Pronostico de</h2>
+    
+            <div class="todaysForecast__flex1">
+                <div id="day1" class="card1">
+                    <h2 class="card__tittle1">Mañana</h2>
+                    <h3 id="desciel1" class="card__descripcion1">Cielo nublado</h3>
+                    <div id="card1__img" class="card__image1">
+                        <img src="build/img/cloud.png" alt="Clima del dia">
+                    </div>
+                    <div class="card__flex1">
+                        <div class="card__inside1">
+                            <p id="tmax1" class="card__grades-Max1">28ºC</p>
+                            <p id="tmin1" class="card__grades-Min1">24ºC</p>
+                        </div>
+                        <div class="card__inside1">
+                            <p id="wind1" class="card__grades-Max1">28ºC</p>
+                            <p id="humidity1" class="card__grades-Min1">24ºC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todaysForecast__flex">
+                <div id="day2" class="card">
+                    <h2 class="card__tittle">Pasado mañana</h2>
+                    <h3 id="desciel2" class="card__descripcion">Tormenta Eléctrica</h3>
+                    <div id="card2__img" class="card__image">
+                        <img src="build/img/electricStorm.png" alt="Clima del dia">
+                    </div>
+                    <div class="card__flex">
+                        <div class="card__inside">
+                            <p id="tmax2" class="card__grades-Max">28ºC</p>
+                            <p id="tmin2" class="card__grades-Min">24ºC</p>
+                        </div>
+                        <div class="card__inside">
+                            <p id="wind2" class="card__grades-Max">28ºC</p>
+                            <p id="humidity2" class="card__grades-Min">24ºC</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="day3" class="card">
+                    <h2 class="card__tittle">Postmañana</h2>
+                    <h3 id="desciel3" class="card__descripcion">Nevado</h3>
+                    <div id="card3__img" class="card__image">
+                        <img src="build/img/snow.png" alt="Clima">
+                    </div>
+                    <div class="card__flex">
+                        <div class="card__inside">
+                            <p id="tmax3" class="card__grades-Max">28ºC</p>
+                            <p id="tmin3" class="card__grades-Min">24ºC</p>
+                        </div>
+                        <div class="card__inside">
+                            <p id="wind3" class="card__grades-Max">28ºC</p>
+                            <p id="humidity3" class="card__grades-Min">24ºC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="moonFacts" class="moonFacts invisible inclinado">
+            <h2 class="moonFacts__tittle">Sabias que<br><span>¿?</span></h2>
+            <div class="moonFacts__flex">
+                <div class="moon__card">
+                    <div class="moon__card-image1">
+                        
+                    </div>
+                    <p class="moon__card-text">Ultimos estudios demuestran que la luna no emite luz propia, en realidad esta reflejando la luz del sol.</p>
+                </div>
+                <div class="moon__card">
+                    <div class="moon__card-image2">
+                        
+                    </div>
+                    <p class="moon__card-text">Ha llegando más gente a la Luna que a las profundidades de los océanos.</p>
+                </div>
+                <div class="moon__card">
+                    <div class="moon__card-image3">
+                        
+                    </div>
+                    <p class="moon__card-text"> La atracción gravitacional de la Luna hace que los océanos se muevan, creando mareas altas y bajas.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mainFooter">
+            <div class="mainFooter__marca">
+                <div class="mainFooter__marca-img">
+                    <img src="build/img/logo.svg" alt="logo">
+                </div>
+                <h3 class="mainFooter__marca-title">Prickly PREDICTIONS</h3>
+            </div>
+            <div class="mainFooter__copyright">
+                <p class="mainFooter__copyright-text">©2023 Prickly Predictions™. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="build/scripts/logic.js"></script>
+    <script src="build/scripts/sidebar.js"></script>
+    <script src="build/scripts/api.js"></script>
+    <script src="build/scripts/effects.js"></script>
+</body>
+</html>

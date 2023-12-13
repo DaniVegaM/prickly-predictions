@@ -1,0 +1,169 @@
+@use "global/variables" as v;
+@use "global/mixins" as m;
+
+.mainHeader{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0 5rem;
+    @include m.tablet{
+        padding: 0 10rem;
+        min-height: 80rem;
+    }
+}
+
+.listadoBackground{
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0.2) 100%), url(../img/listado.jpg);
+    @include m.tablet{
+        min-height: 40rem;
+    }
+}
+
+.todosClimas{
+    text-align: center;
+    background-color: v.$blanco;
+    padding-bottom: 20rem;
+    .todosClimas__title{
+        color: v.$secundario;
+        font-family: v.$fuente-titulos;
+        padding: 5rem 0;
+        text-transform: uppercase;
+        padding: 2rem 4rem;
+        &::after{
+            background-image: linear-gradient(to right, v.$primario 50%, v.$terciario 50%, v.$terciario 100%);
+            content: "";
+            display: block;
+            height: 0.8rem;
+            margin: 0.5rem 0 3rem 0;
+            width: 15rem;
+            margin: 2rem auto;
+        }
+    }
+    #todosClimasGrid{
+        padding: 0 5rem 5rem 5rem;
+        @include m.grid(1, 1fr, 2rem);
+        @include m.tablet{
+            @include m.grid(2, 1fr, 2rem);
+        }
+        @include m.desktop{
+            @include m.grid(3, 1fr, 2rem);
+            padding: 0 10rem 5rem 10rem 5rem;
+        }
+
+        .state__title{
+            @include m.tablet{
+                grid-column: 1 / 3;
+            }
+            @include m.desktop{
+                grid-column: 1 / 4;
+                margin: 2.5rem 0;
+            }
+        }
+
+        .todosClimas__card{
+            background: v.$contrasteDia3;
+            border-radius: 5rem;
+            padding: 2rem 1rem;
+            h2{
+                font-family: v.$fuente-special;
+            }
+            .card{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                background-color: v.$secundario;
+                padding: 2rem;
+                border-radius: 5rem;
+                color: v.$blanco;
+                margin-bottom: 4rem;
+                @include m.tablet{
+                    margin-bottom: 0;
+                }
+            }
+            .card__flex{
+                display: flex;
+                justify-content: space-evenly;
+                @include m.tablet{
+                    padding: 0 1rem;
+                    gap: 4rem;
+                }
+                p{
+                    color: v.$blanco;
+                }
+                .card__grades-Max, .card__grades-Min{
+                    color: v.$negro;
+                    margin: 1rem 0;
+                    span{
+                        font-weight: bold;
+                        font-size: 2.4rem;
+                        @include m.tablet{
+                            font-size: 2.6rem;
+                        }
+                    }
+
+                    @include m.desktop{
+                        margin: 0;
+                    }
+                }
+                .card__grades-Max, .card__grades-Min{
+                    @include m.tablet{
+                        font-size: 1.6rem;
+                    }
+                    span{
+                        @include m.tablet{
+                            font-size: 2rem;
+                        }
+                    }
+                }
+                @include m.desktop{
+                    flex-direction: row;
+                }
+            }
+            .card__tittle{
+                margin-bottom: 2rem;
+                font-size: 2.8rem;
+                color: v.$negro;
+                @include m.tablet{
+                    font-size: 2.6rem;
+                }
+                @include m.desktop{
+                    font-size: 2.8rem;
+                }
+            }
+            .card__descripcion{
+                font-size: 2.2rem;
+                font-family: v.$fuente-special;
+                color: v.$negro;
+            }
+            .card__image{
+                margin: 2rem 0;
+                max-width: 60%;
+                margin: 4rem auto 4rem auto;
+            }
+        }
+    }
+    .loadMore{
+        padding: 2rem;
+        border-radius: 5rem;
+        background-color: v.$primario;
+        color: v.$blanco;
+        font-family: v.$fuente-special;
+        text-transform: uppercase;
+        font-size: 3.6rem;
+        cursor: pointer;
+        transition: all ease .3s;
+        &:hover{
+            background-color: v.$primario-hover;
+        }
+    }
+    .selectState{
+        margin: 4rem 0;
+        border: 2px solid v.$secundario;
+        border-radius: 2rem;
+        height: 5rem;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: v.$blanco;
+    }
+}

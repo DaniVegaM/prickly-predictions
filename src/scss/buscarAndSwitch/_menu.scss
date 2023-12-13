@@ -1,0 +1,86 @@
+@use "global/mixins" as m;
+@use "global/variables" as v;
+
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40rem;
+    padding: 5rem 0;
+    text-align: center;
+    @include m.tablet{
+        justify-content: space-between;
+        flex-direction: column-reverse;
+    }
+    .menu__logo{
+        max-width: 20rem;
+        margin: 0 auto;
+    }
+    .menu__marca{
+        color: v.$blanco;
+        margin-bottom: 2rem;
+        @include m.tablet{
+            margin-top: 8rem;
+        }
+    }
+    .menu__text{
+        font-size: 3.6rem;
+        font-family: v.$fuente-special;
+        @include m.tablet{
+            font-size: 7.4rem;
+            margin-bottom: 2rem;
+        }
+        .texto-marca{
+            font-family: v.$fuente-titulos;
+            text-transform: uppercase;
+            color: transparent;
+            background-clip: text;
+            background-image: linear-gradient(to right top, #32974b, #49ad47, #65c23f, #85d730, #a8eb12);
+        }
+        &::after{
+            content: ' ';
+            display: inline;
+            width: 2rem;
+            height: 4rem;
+            background-image: url("/build/img/flower.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            @include m.tablet{
+                width: 6rem;
+                height: 8rem;
+            }
+        }
+        .brilla{
+            color: v.$blanco;
+            font-family: v.$fuente-titulos;
+            text-transform: uppercase;
+            background-image: none;
+            text-shadow: 1px 1px 2px v.$negro, 0 0 1em v.$blanco, 0 0 0.2em v.$blanco;
+        }
+    }
+    .menu__slogan{
+        color: v.$blanco;
+        font-family: v.$fuente-cursiva;
+        font-size: 2.8rem;
+        font-style: italic;
+    }
+}
+.centrar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .menu__marca{
+        margin: 0;
+        .menu__slogan{
+            font-size: 2.6rem;
+            color: v.$negro;
+            font-weight: bold;
+            @include m.tablet{
+                font-size: 3rem;
+            }
+        }
+    }
+}
