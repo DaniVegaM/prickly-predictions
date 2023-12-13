@@ -140,7 +140,11 @@ function generarHTMLMain(resultado) {
         generarHTMLDinamico("B", fragment, fragment2, option);
     });
 
+<<<<<<< HEAD
     select.addEventListener("click", ()=>{
+=======
+    select.addEventListener("change", ()=>{
+>>>>>>> e7ad9c5e9a7dcf77b49d6ae8cbe7d9bc1c87b88c
         if(select.value != option){
             option = select.value;
 
